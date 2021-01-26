@@ -2,101 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b15a1d-dc4b-4c6c-9b0f-0aa6a28367d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/korapay.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/models/Answers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/models/Comments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/models/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/models/Questions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/models/Users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/models/Votes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/controllers/answer.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/controllers/auth.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/controllers/comments.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/controllers/comments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/controllers/question.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/routes/answer.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/routes/auth.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/routes/comment.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/routes/question.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/services/answer.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/services/answer.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/services/auth.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/services/comments.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/services/question.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/modules/services/question.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/sequelize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/dto/user.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/exception/BadRequestException.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/exception/NotAuthorizedException.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/exception/NotFoundException.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/exception/exceptionResponse.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/middlewares/errorHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/middlewares/isAuthorized.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/middlewares/questionHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/utils/HttpException.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/utils/RequestWithUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/utils/jsonwebtoken.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/utils/responseHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/shared/validations/auth.validation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Answers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Comments.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Notification.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Questions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Subscription.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Users.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Votes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/controllers/answer.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/controllers/auth.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/controllers/comments.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/controllers/question.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/controllers/vote.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/event/NotificationHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/event/socket.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/routes/answer.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/routes/auth.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/routes/comment.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/routes/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/routes/question.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/services/answer.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/services/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/services/comments.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/services/question.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/services/subscription.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/services/vote.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sequelize.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/dto/user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/exception/BadRequestException.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/exception/NotAuthorizedException.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/exception/NotFoundException.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/exception/exceptionResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/middlewares/answerHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/middlewares/errorHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/middlewares/isAuthorized.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/middlewares/voteHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/utils/HttpException.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/utils/RequestWithUser.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/utils/Validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/utils/jsonwebtoken.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/utils/responseHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/validations/answer.validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/validations/auth.validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/validations/comment.validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/validations/question.validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/stack.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1611429036808</updated>
       <workItem from="1611429039591" duration="38398000" />
-      <workItem from="1611591012595" duration="14570000" />
+      <workItem from="1611591012595" duration="15168000" />
     </task>
     <servers />
   </component>
