@@ -47,8 +47,7 @@ yarn add
 
 
 * To continuously watch for changes
-    * 
-      ```markdown 
+    * ```markdown 
       npm run dev
       ```
       
