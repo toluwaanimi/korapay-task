@@ -32,6 +32,8 @@ cinst nodejs
 ## To install Postgres
 
 
+## Start Development
+
 Installation
 To install the necessary packages, in your folder directory kindly run
 
@@ -43,7 +45,7 @@ npm i
 yarn add
 ```
 
-Start Development
+
 * To continuously watch for changes
     * 
       ```markdown 
