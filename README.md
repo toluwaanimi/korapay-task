@@ -24,6 +24,9 @@ yarn add
 
 ## Implementation Required
 * Authentication
+    * Login
+    * Registration
+    
 * Questions 
     * Asking
     * Replying
