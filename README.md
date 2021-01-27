@@ -7,11 +7,32 @@ The postman documentation can be access [here](#)
 
 
 ## Requirements
-Node 12 or higher
+* Node 12 or higher
+
+* Postgres
+
+## Install NodeJS
+To Install NodeJS, kindly go to [Nodejs](https://nodejs.com) and follow the necessary instructions required depending on your PC Operating System
+
+## MACOS
+using a [package](https://nodejs.org/en/#download) simply download the installer
+
+using [homebrew](https://github.com/Homebrew/legacy-homebrew)
+```markdown
+brew install node
+```
+## Windows
+using a [package](https://nodejs.org/en/#download) simply download the installer
+
+using [chocolatey](http://chocolatey.org/) to install Node
+```markdown
+cinst nodejs
+```
+
+## To install Postgres
 
 
 Installation
-
 To install the necessary packages, in your folder directory kindly run
 
 ```markdown
