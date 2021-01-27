@@ -81,6 +81,7 @@ Bonus Task
 2. You gain reputation when :
     * question is voted up: +10
     * answer is voted up: +10
+    * when your answer is accepted: +15
     
 3. You lose reputation when :
    * your question is voted down: −2
