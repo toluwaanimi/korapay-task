@@ -2,16 +2,19 @@
   "name": "korapay",
   "version": "1.0.0",
   "description": "Korapay test",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
     "start": "node dist/index.js",
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
+    "doc": "typedoc --plugin typedoc-plugin-markdown --out docs --excludeExternals --excludePrivate --includeVersion src",
     "dev": "concurrently  \"npm:build:dev\" \"npm:start:dev\"",
     "test": "jest ",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix"
   },
+  "types": "src/index.ts",
+
   "jest": {
     "moduleFileExtensions": [
       "ts",
@@ -114,6 +117,8 @@
     "nodemon": "^2.0.4",
     "ts-jest": "^26.1.2",
     "tslint": "^6.1.2",
+    "typedoc": "^0.17.8",
+    "typedoc-plugin-markdown": "^3.0.3",
     "typescript": "^3.9.6"
   }
 }

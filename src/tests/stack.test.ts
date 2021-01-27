@@ -56,12 +56,22 @@ describe('Describe Answer Activities', () => {
     // })
 })
 
-describe('Describe comment Activities', ()=>{
-    test('make a comment to a question', async ()=>{
+describe('Describe comment Activities', () => {
+    test('make a comment to a question', async () => {
 
     })
 
-    test('make a comment to an answer', async ()=>{
+    test('make a comment to an answer', async () => {
 
     })
 })
+
+describe('Describe Voting Activities', () => {
+
+})
+
+
+describe('Describe User Subscriptions', () => {
+
+})
+
