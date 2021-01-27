@@ -6,7 +6,7 @@ The stackoverflow task is basic implementation of [Stackoverflow](https://stacko
 The postman documentation can be access [here](#)
 
 
-##Requirements
+## Requirements
 Node 12 or higher
 
 
