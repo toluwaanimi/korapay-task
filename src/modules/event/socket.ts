@@ -4,6 +4,10 @@ import {app} from '../../app';
 // @ts-ignore
 const io = socket(app);
 
+/**
+
+ * @description connection to socket
+ */
 io.on('connection', () => {
     console.log('connection made');
 });

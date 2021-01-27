@@ -1,6 +1,17 @@
 import {NextFunction, Request, Response} from 'express';
-import HttpException from "./HttpException";
 
+
+/**
+ * @method handleSuccess
+ * @description custom success response handler
+ * @param code
+ * @param message
+ * @param data
+ * @param request
+ * @param response
+ * @param meta
+ * @param next
+ */
 
 function handleSuccess(code: number, message: string, data: any, request: Request, response: Response, meta ?: any, next?: NextFunction) {
     response
@@ -13,6 +24,17 @@ function handleSuccess(code: number, message: string, data: any, request: Reques
         });
 }
 
+/**
+ * @method handleFailure
+ * @description custom error response handler
+ * @param code
+ * @param message
+ * @param data
+ * @param request
+ * @param response
+ * @param meta
+ * @param next
+ */
 function handleFailure(code: number, message: string, data: any, request: Request, response: Response, meta ?: any, next?: NextFunction) {
     response
         .status(code)

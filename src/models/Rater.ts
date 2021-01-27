@@ -6,15 +6,13 @@ import {
     CreatedAt,
     UpdatedAt,
     AutoIncrement,
-    PrimaryKey, DataType, ForeignKey, BelongsTo,
+    PrimaryKey, DataType, ForeignKey, BelongsTo
 } from "sequelize-typescript";
-import {Questions} from "./Questions";
-import bcrypt from 'bcrypt'
-import {Users} from "./Users";
-import {Answers} from "./Answers";
 
-@Table({tableName: 'comments'})
-export class Comments extends Model {
+import {Users} from "./Users";
+
+@Table({tableName: 'vote_rate'})
+export class Rater extends Model {
 
     @AutoIncrement
     @PrimaryKey
@@ -22,24 +20,11 @@ export class Comments extends Model {
     id!: number
 
 
-    @Column(DataType.TEXT)
-    comment!: string
-
-
-    @BelongsTo(() => Answers)
-    answers!: Answers
-
-    @ForeignKey(() => Answers)
     @Column(DataType.INTEGER)
-    answerId !: number
+    counts !: number
 
-
-    @BelongsTo(() => Questions)
-    questions!: Questions
-
-    @ForeignKey(() => Questions)
-    @Column(DataType.INTEGER)
-    questionId !: number
+    @Column(DataType.STRING)
+    date !: string
 
     @BelongsTo(() => Users)
     users!: Users
@@ -47,6 +32,7 @@ export class Comments extends Model {
     @ForeignKey(() => Users)
     @Column(DataType.INTEGER)
     userId !: number
+
 
     @CreatedAt
     @Column(DataType.DATE)

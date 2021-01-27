@@ -2,11 +2,10 @@ import {
     Model,
     Column,
     Table,
-    BelongsToMany,
     CreatedAt,
     UpdatedAt,
     AutoIncrement,
-    PrimaryKey, DataType, HasOne, HasMany, Unique, BeforeCreate, AllowNull, Default, ForeignKey, BelongsTo
+    PrimaryKey, DataType,  Default, ForeignKey, BelongsTo
 } from "sequelize-typescript";
 import {Questions} from "./Questions";
 

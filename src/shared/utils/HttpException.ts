@@ -1,3 +1,7 @@
+
+/**
+ *@class HttpException
+ */
 class HttpException extends Error {
     public code: number;
     public message: string;

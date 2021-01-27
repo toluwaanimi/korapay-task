@@ -41,6 +41,15 @@ const isEmpty = (body: any, req: any, res: any, next: any) => {
     return next();
 };
 
+
+/**
+ * Validate Body
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @param options
+ * @param extra
+ */
 const validateRequired = (req: any, res: any, next: any, options: any, extra: any) => {
     const requiredFields = fieldRequired(req.body, options);
     if ((typeof requiredFields === 'object') && requiredFields.length > 0) {
@@ -49,4 +58,4 @@ const validateRequired = (req: any, res: any, next: any, options: any, extra: an
     if (extra) return isEmpty(extra, req, res, next);
     return next();
 }
-export  {fieldRequired, isEmpty, validateRequired};
+export {fieldRequired, isEmpty, validateRequired};

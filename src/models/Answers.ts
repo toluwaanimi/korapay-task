@@ -11,6 +11,7 @@ import {
 import {Users} from "./Users";
 import {Questions} from "./Questions";
 import {Votes} from "./Votes";
+import {Comments} from "./Comments";
 
 @Table({tableName: 'answers'})
 export class Answers extends Model {
@@ -23,6 +24,10 @@ export class Answers extends Model {
 
     @Column(DataType.TEXT)
     answer!: string
+
+    @Default(0)
+    @Column(DataType.INTEGER)
+    counts!: number
 
     @ForeignKey(() => Questions)
     @Column(DataType.INTEGER)
@@ -44,6 +49,9 @@ export class Answers extends Model {
 
     @HasMany(() => Votes)
     votes!: Votes[]
+
+    @HasMany(() => Comments)
+    comments!: Votes[]
     @CreatedAt
     @Column(DataType.DATE)
     createdAt!: Date;

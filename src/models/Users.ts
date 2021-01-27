@@ -12,6 +12,7 @@ import {Questions} from "./Questions";
 import bcrypt from 'bcrypt'
 import {Votes} from "./Votes";
 import {Subscription} from "./Subscription";
+import {Rater} from "./Rater";
 
 @Table({tableName: 'users'})
 export class Users extends Model {
@@ -76,6 +77,9 @@ export class Users extends Model {
 
     @HasMany(() => Votes)
     votes !: Votes[]
+
+    @HasMany(() => Rater)
+    rater !: Rater[]
 
 
     @BeforeCreate

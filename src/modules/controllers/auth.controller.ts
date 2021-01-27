@@ -3,12 +3,14 @@ import AuthService from "../services/auth.service";
 import {handleSuccess} from "../../shared/utils/responseHandler";
 
 export default class AuthController {
+
     /**
      * @method  createAccount
-     * @description
+     * @description This method helps in creating the user account returning a JWT token to authorize routes
      * @param {*} req
      * @param {*} res
      * @param {*} next
+     * @returns handleSuccess
      */
     static async createAccount(req: Request, res: Response, next: NextFunction) {
         try {
@@ -19,6 +21,14 @@ export default class AuthController {
         }
     }
 
+    /**
+     * @method  login
+     * @description login method authorize an existing user by giving the user access to routes that requires authorization
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
     static async login(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await AuthService.login(req.body)

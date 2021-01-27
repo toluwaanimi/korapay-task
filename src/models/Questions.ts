@@ -27,6 +27,11 @@ export class Questions extends Model {
     @Column(DataType.TEXT)
     question !: string
 
+    @Default(0)
+    @Column(DataType.INTEGER)
+    counts!: number
+
+
     @Column(DataType.ARRAY(DataType.STRING))
     tags !: string[]
 

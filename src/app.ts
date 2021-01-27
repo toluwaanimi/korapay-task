@@ -19,9 +19,3 @@ app.use((req, res, next) => {
     next();
 });
 app.use(errorMiddleware)
-
-
-// app.use(errorhandler({
-//     debug: process.env.ENV !== 'prod',
-//     log: true,
-// }));

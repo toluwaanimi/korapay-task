@@ -24,9 +24,11 @@ export class Votes extends Model {
     id!: number
 
 
-    @Default('')
+
     @Column(DataType.ENUM('upvote', 'downvote'))
     voteType !: VoterStatus
+
+
 
     @BelongsTo(() => Answers)
     answers!: Answers

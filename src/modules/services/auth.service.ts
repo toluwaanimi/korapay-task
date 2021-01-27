@@ -5,8 +5,19 @@ import UserWithThatEmailAlreadyExistsException from "../../shared/exception/exce
 import {generateToken} from "../../shared/utils/jsonwebtoken";
 import BadRequestException from "../../shared/exception/BadRequestException";
 
+
+/**
+ *@class AuthService
+ */
 export default class AuthService {
 
+
+    /**
+     * @method  submit
+     * @description create an account for the user
+     * @returns {}
+     * @param body
+     */
     static async createAccount(body: createUserDTO) {
         if (await Users.findOne({where: {email: body.email}})) {
             throw new UserWithThatEmailAlreadyExistsException(body.email)
@@ -15,6 +26,13 @@ export default class AuthService {
         return generateToken({id: user.id})
     }
 
+
+    /**
+     * @method  login
+     * @description logins a user in and generate JWT
+     * @returns {}
+     * @param body
+     */
     static async login(body: loginUserDTO) {
         const user = await Users.findOne({where: {email: body.email}})
         if (user && bcrypt.compareSync(body.password, user.password)) {

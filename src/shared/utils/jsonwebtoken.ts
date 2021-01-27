@@ -4,16 +4,15 @@ import {handleFailure} from "./responseHandler";
 
 const secret: string = process.env.JWT_SECRET || "key"
 
-/**
- * Generate Token
- *
- * @param {*} payload
- * @param {*} exp
- */
 
 interface Payload {
     id: number
 }
+/**
+ * Generate Token
+ * @param {*} payload
+ * @param {*} exp
+ */
 
 const generateToken = async (payload: Payload, exp = '30d') => {
     return jwt.sign(payload, secret, {
@@ -24,6 +23,7 @@ const generateToken = async (payload: Payload, exp = '30d') => {
 /**
  * Verify Token
  * @param {*} token
+ * @param req
  * @param {*} res
  */
 const verifyToken = (token: any, req: Request, res: Response): any => jwt.verify(token, secret, (err: any, decoded: any) => {

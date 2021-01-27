@@ -1,9 +1,22 @@
 import {Questions} from "../../models/Questions";
 import {Answers} from "../../models/Answers";
 import NotFoundException from "../../shared/exception/NotFoundException";
-import {Votes} from "../../models/Votes";
+import {Comments} from "../../models/Comments";
 
+
+/**
+ * @class QuestionService
+ */
 export class QuestionService {
+
+
+    /**
+     * @method  create
+     * @description submit a question entry for a user
+     * @returns {}
+     * @param data
+     * @param user
+     */
     static async create(data: any, user: any) {
         const question = await Questions.create({
             title: data.title,
@@ -22,20 +35,46 @@ export class QuestionService {
         }
     }
 
-    static async findUserQuestions(data: any, user: any) {
 
+    /**
+     * @method  findUserQuestions
+     * @description get questions asked by a user
+     * @returns []
+     * @param data
+     * @param user
+     */
+    static async findUserQuestions(data: any, user: any) {
         return await Questions.findAndCountAll({
             where: {userId: user.userdataValues.id},
             limit: data.per_page || 50,
-            offset: data.page || 1
+            offset: data.page || 1,
+            include: [{
+                model: Answers,
+                as: 'answers',
+                include: [{
+                    model: Comments,
+                    as: 'comments'
+                }]
+            }]
         })
     }
 
+
+    /**
+     * @method  findOneQuestion
+     * @description get a single question
+     * @returns {}
+     * @param data
+     */
     static async findOneQuestion(data: any) {
         const question = await Questions.findOne({
             where: {id: data.id}, include: [{
                 model: Answers,
-                as: 'answers'
+                as: 'answers',
+                include: [{
+                    model: Comments,
+                    as: 'comments'
+                }]
             }]
         })
         if (question) {
@@ -46,8 +85,24 @@ export class QuestionService {
         }
     }
 
+
+    /**
+     * @method  findAllQuestions
+     * @description get all Questions
+     * @returns []
+     * @param data
+     */
     static async findAllQuestions(data: any) {
-        return await Questions.findAndCountAll({limit: data.per_page || 50, offset: data.page || 1})
+        return await Questions.findAndCountAll({
+            limit: data.per_page || 50, offset: data.page || 0, include: [{
+                model: Answers,
+                as: 'answers',
+                include: [{
+                    model: Comments,
+                    as: 'comments'
+                }]
+            }]
+        })
     }
 
 

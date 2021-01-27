@@ -1,6 +1,6 @@
 import express, {Router} from 'express';
 import isAuthorized from "../../shared/middlewares/isAuthorized";
-import {CommentsService} from "../services/comments.service";
+import CommentsController from "../controllers/comments.controller";
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ const router = express.Router();
  * @apiParam  {String} [status] Status
  * @apiSuccess (200) {Object} mixed `User` object
  */
-router.post('/', isAuthorized, CommentsService.create)
-router.put('/:id', isAuthorized, CommentsService.editComment)
-router.delete('/', isAuthorized, CommentsService.deleteComment)
+router.post('/', isAuthorized, CommentsController.create)
+router.put('/:id', isAuthorized, CommentsController.editComment)
+router.delete('/', isAuthorized, CommentsController.removeComment)
 export const commentRoutes: Router = router

@@ -1,15 +1,15 @@
 import {NextFunction, Request, Response} from "express";
 import {handleSuccess} from "../../shared/utils/responseHandler";
-import RequestWithUser from "../../shared/utils/RequestWithUser";
 import {CommentsService} from "../services/comments.service";
 
 export default class CommentsController {
     /**
-     * @method  createAccount
-     * @description
+     * @method  create
+     * @description It create comment entry for questions or answers for a user
      * @param {*} req
      * @param {*} res
      * @param {*} next
+     * @returns handleSuccess
      */
     static async create(req: any, res: Response, next: NextFunction) {
         try {
@@ -20,6 +20,14 @@ export default class CommentsController {
         }
     }
 
+    /**
+     * @method  editComment
+     * @description Create an opportunity for the user to update their comments
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
     static async editComment(req: any, res: Response, next: NextFunction) {
         try {
             const comment = await CommentsService.editComment({id: req.params.id, comment: req.body.comment}, req.user)
@@ -29,7 +37,14 @@ export default class CommentsController {
         }
     }
 
-
+    /**
+     * @method  removeComment
+     * @description Deletes the comment of a user from an answer or a question
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
     static async removeComment(req: any, res: Response, next: NextFunction) {
         try {
             await CommentsService.deleteComment(req.params, req.user)

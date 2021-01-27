@@ -1,15 +1,15 @@
 import {NextFunction, Request, Response} from "express";
 import {handleSuccess} from "../../shared/utils/responseHandler";
 import {QuestionService} from "../services/question.service";
-import RequestWithUser from "../../shared/utils/RequestWithUser";
 
 export default class QuestionController {
     /**
-     * @method  createAccount
-     * @description
+     * @method  create
+     * @description a user is able to create a question expecting answers and comments from other users
      * @param {*} req
      * @param {*} res
      * @param {*} next
+     * @returns handleSuccess
      */
     static async create(req: any, res: Response, next: NextFunction) {
         try {
@@ -20,6 +20,14 @@ export default class QuestionController {
         }
     }
 
+    /**
+     * @method  findUserQuestions
+     * @description It gets every questions asked by a user
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
     static async findUserQuestions(req: any, res: Response, next: NextFunction) {
         try {
             console.log(req.user)
@@ -31,6 +39,14 @@ export default class QuestionController {
     }
 
 
+    /**
+     * @method  findOneQuestion
+     * @description It gets a single question
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
     static async findOneQuestion(req: Request, res: Response, next: NextFunction) {
         console.log(req.params)
         try {
@@ -42,6 +58,14 @@ export default class QuestionController {
         }
     }
 
+    /**
+     * @method  findAll
+     * @description It gets all the questions asked
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
     static async findAll(req: Request, res: Response, next: NextFunction) {
         try {
             const questions = await QuestionService.findAllQuestions(req.query)

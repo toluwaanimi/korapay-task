@@ -1,16 +1,40 @@
 import {Comments} from "../../models/Comments";
 import NotFoundException from "../../shared/exception/NotFoundException";
+import NotificationHandler from "../event/NotificationHandler";
 
+
+/**
+ * @class CommentsService
+ */
 export class CommentsService {
+
+    /**
+     * @method  create
+     * @description Create a comment
+     * @returns {}
+     * @param data
+     * @param user
+     */
     static async create(data: any, user: any) {
+        await NotificationHandler.notifyUsers({
+            userId: user.id,
+            questionId: data.questionId
+        })
         return await Comments.create({
             comment: data.comment,
             answerId: data.answerId,
             questionId: data.questionId,
-            userId: user.userId
+            userId: user.id
         })
     }
 
+    /**
+     * @method  editComment
+     * @description edit a comment
+     * @returns {}
+     * @param data
+     * @param user
+     */
 
     static async editComment(data: any, user: any) {
         const comment = await Comments.findOne({where: {id: data.id, userId: user.id}})
@@ -22,10 +46,15 @@ export class CommentsService {
         }
     }
 
-
+    /**
+     * @method  deleteComment
+     * @description delete a comment
+     * @returns {}
+     * @param data
+     * @param user
+     */
     static async deleteComment(data: any, user: any) {
         return await Comments.destroy({where: {userId: user.id, id: data.id}})
     }
-
 
 }
