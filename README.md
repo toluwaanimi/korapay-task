@@ -3,7 +3,7 @@
 The stackoverflow task is basic implementation of [Stackoverflow](https://stackoverflow.com)
 
 ## Documentation
-The postman documentation can be access [here](#)
+The postman documentation can be accessed [here](#)
 
 
 ## Requirements
