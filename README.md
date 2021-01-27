@@ -73,4 +73,16 @@ Bonus Task
 * Subscription
 
 
+## Stackoverflow Rules based on the scope of implementation
+1. How to gain reputation ?
+   
+   The primary way to gain reputation is by posting good questions and useful answers. Votes on these posts cause you to gain (or sometimes lose) reputation.
 
+2. You gain reputation when :
+    * question is voted up: +10
+    * answer is voted up: +10
+    
+3. You lose reputation when :
+   * your question is voted down: −2
+   * your answer is voted down: −2
+   * you vote down an answer: −1
