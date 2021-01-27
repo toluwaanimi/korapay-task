@@ -22,6 +22,18 @@ npm i
 yarn add
 ```
 
+## Implementation Required
+* Authentication
+* Questions 
+    * Asking
+    * Replying
+    
+* Rating
+    * Upvoting
+    * Downvoting
+    
+Bonus Task
+* Subscription
 
 
 
