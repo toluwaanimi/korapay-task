@@ -22,6 +22,18 @@ npm i
 yarn add
 ```
 
+Start Development
+* To continuously watch for changes
+    * 
+      ```markdown 
+      npm run dev
+      ```
+      
+* To run your app server for production
+    * ```markdown
+      npm run start
+         ```
+
 ## Implementation Required
 * Authentication
     * Login
