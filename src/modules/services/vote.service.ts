@@ -342,7 +342,7 @@ export class VoteService {
                 }, {where: {id: data.questionId}})
                 const activeUser = await Users.findOne({where: {id: user.id}})
                 // @ts-ignore
-                await Users.update({reputation: activeUser?.reputation + 1}, {where: {id: user.id}})
+                await Users.update({reputation: (parseInt(activeUser?.reputation) + 1)}, {where: {id: user.id}})
 
 
                 const answererUser = await Users.findOne({where: {id: question.userId}})

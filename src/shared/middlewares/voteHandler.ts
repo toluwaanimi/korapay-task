@@ -4,17 +4,29 @@ import {handleFailure} from "../utils/responseHandler";
 import {Votes} from "../../models/Votes";
 import {Rater} from "../../models/Rater";
 import statusCode from 'http-status-codes'
+import {Answers} from "../../models/Answers";
 
 export default class VoteHandler {
-    static async validateUserVote(req: any, res: Response, next: NextFunction) {
-        const id = req.params;
+    static async validateUserQuestionVote(req: any, res: Response, next: NextFunction) {
+        const body = req.body;
         const user = req.user.id
-        const question = await Questions.findOne({where: {id: 2, userId: user}})
+        const question = await Questions.findOne({where: {id: body.questionId, userId: user}})
         if (question) return handleFailure(400, "you cant vote your question", undefined, req, res)
         // @ts-ignore
         // const voteExist = await Votes.findOne({where: {questionId: question.id}})
         next()
     }
+
+    static async validateUserAnswerVote(req: any, res: Response, next: NextFunction) {
+        const body = req.body;
+        const user = req.user.id
+        const answer = await Answers.findOne({where: {id: body.answerId, userId: user}})
+        if (answer) return handleFailure(400, "you cant vote your answer", undefined, req, res)
+        // @ts-ignore
+        // const voteExist = await Votes.findOne({where: {questionId: question.id}})
+        next()
+    }
+
 
     static async rateLimiter(req: any, res: Response, next: NextFunction) {
         const day = new Date().getDate() + "" + (new Date().getMonth() + 1) + "" + new Date().getFullYear()
@@ -36,7 +48,6 @@ export default class VoteHandler {
         if (answer) return handleFailure(statusCode.BAD_REQUEST, "already upvoted the answer, kindly undo your vote", undefined, req, res)
         next()
     }
-
 
 
     static async alreadyDownVotedAnswer(req: any, res: Response, next: NextFunction) {

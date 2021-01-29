@@ -15,9 +15,9 @@ const router = express.Router();
  * @apiParam  {String} [status] Status
  * @apiSuccess (200) {Object} mixed `User` object
  */
-router.post('/upvote', [isAuthorized, validateVoteAnswerParams, VoteHandler.rateLimiter, VoteHandler.alreadyUpVotedAnswer], VoteController.upVoteAnswer)
+router.post('/upvote', [isAuthorized, validateVoteAnswerParams, VoteHandler.validateUserAnswerVote, VoteHandler.rateLimiter, VoteHandler.alreadyUpVotedAnswer], VoteController.upVoteAnswer)
 router.post('/undoupvote', [isAuthorized, validateVoteAnswerParams, VoteHandler.validateUpVote], VoteController.undoUpVoteAnswer)
-router.post('/downvote', [isAuthorized, validateVoteAnswerParams, VoteHandler.rateLimiter, VoteHandler.alreadyDownVotedAnswer], VoteController.downVoteAnswer)
+router.post('/downvote', [isAuthorized, validateVoteAnswerParams, VoteHandler.validateUserAnswerVote, VoteHandler.rateLimiter, VoteHandler.alreadyDownVotedAnswer], VoteController.downVoteAnswer)
 router.post('/undodownvote', [isAuthorized, validateVoteAnswerParams, VoteHandler.validateDownVote], VoteController.undoDownVoteAnswer)
 
 export const answersVotesRoutes: Router = router
