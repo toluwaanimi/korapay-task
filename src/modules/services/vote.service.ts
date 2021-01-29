@@ -37,20 +37,22 @@ export class VoteService {
                     await Answers.update({
                         counts: answer?.counts + 2
                     }, {where: {id: data.answerId}})
-                } else {
-                    await Answers.update({
-                        counts: answer?.counts + 1
-                    }, {where: {id: data.answerId}})
                 }
+                await Answers.update({
+                    counts: answer?.counts + 1
+                }, {where: {id: data.answerId}})
                 const answererUser = await Users.findOne({where: {id: answer.userId}})
+
                 // @ts-ignore
-                await Users.update({reputation: answererUser?.reputation + 10}, {where: {id: answer.userId}})
+                const userd = await Users.update({reputation: parseInt(answererUser?.reputation) + 10}, {where: {id: answer.userId}})
+                console.log(userd)
+                return await Votes.create({
+                    voteType: 'upvote',
+                    userId: user.id,
+                    answerId: data.answerId
+                })
             }
-            return await Votes.create({
-                voteType: 'upvote',
-                userId: user.id,
-                answerId: data.answerId
-            })
+
         } catch (e) {
             throw new BadRequestException('something went wrong')
         }
@@ -162,12 +164,12 @@ export class VoteService {
                 }, {where: {id: data.answerId}})
                 const activeUser = await Users.findOne({where: {id: user.id}})
                 // @ts-ignore
-                await Users.update({reputation: activeUser?.reputation + 1}, {where: {id: user.id}})
+                await Users.update({reputation: parseInt(activeUser?.reputation) + 1}, {where: {id: user.id}})
 
 
                 const answererUser = await Users.findOne({where: {id: answer.userId}})
                 // @ts-ignore
-                await Users.update({reputation: answererUser?.reputation + 2}, {where: {id: answer.userId}})
+                await Users.update({reputation: parseInt(answererUser?.reputation) + 2}, {where: {id: answer.userId}})
             }
             return await Votes.destroy({
                 where: {
@@ -219,12 +221,12 @@ export class VoteService {
                 }
                 const answererUser = await Users.findOne({where: {id: question.userId}})
                 // @ts-ignore
-                await Users.update({reputation: answererUser?.reputation + 10}, {where: {id: question.userId}})
+                await Users.update({reputation: parseInt(answererUser?.reputation) + 10}, {where: {id: question.userId}})
             }
             return await Votes.create({
                 voteType: 'upvote',
                 userId: user.id,
-                answerId: data.answerId
+                questionId: data.questionId
             })
         } catch (e) {
             throw new BadRequestException('something went wrong')
@@ -251,15 +253,16 @@ export class VoteService {
                 // await Users.update({},{where: {}})
                 const answererUser = await Users.findOne({where: {id: question.userId}})
                 // @ts-ignore
-                await Users.update({reputation: ((answererUser?.reputation - 10) < 1) ? 1 : answererUser?.reputation - 10}, {where: {id: question.userId}})
+                await Users.update({reputation: ((parseInt(answererUser?.reputation) - 10) < 1) ? 1 : parseInt(answererUser?.reputation) - 10}, {where: {id: question.userId}})
+                return await Votes.destroy({
+                    where: {
+                        voteType: 'upvote',
+                        userId: user.id,
+                        questionId: data.questionId
+                    }
+                })
             }
-            return await Votes.destroy({
-                where: {
-                    voteType: 'upvote',
-                    userId: user.id,
-                    questionId: data.questionId
-                }
-            })
+
         } catch (e) {
             throw new BadRequestException('something went wrong')
         }
@@ -306,8 +309,9 @@ export class VoteService {
 
 
                 const answererUser = await Users.findOne({where: {id: question.userId}})
+
                 // @ts-ignore
-                await Users.update({reputation: ((answererUser?.reputation - 2) < 1) ? 1 : answererUser?.reputation - 2}, {where: {id: answer.questionId}})
+                await Users.update({reputation: ((parseInt(answererUser?.reputation) - 2) < 1) ? 1 : parseInt(answererUser?.reputation) - 2}, {where: {id: question.userId}})
             }
 
             return await Votes.create({
@@ -316,6 +320,7 @@ export class VoteService {
                 questionId: data.questionId
             })
         } catch (e) {
+            console.log(e)
             throw new BadRequestException('something went wrong')
         }
 
@@ -342,7 +347,7 @@ export class VoteService {
 
                 const answererUser = await Users.findOne({where: {id: question.userId}})
                 // @ts-ignore
-                await Users.update({reputation: answererUser?.reputation + 2}, {where: {id: answer.userId}})
+                await Users.update({reputation: parseInt(answererUser?.reputation) + 2}, {where: {id: question.userId}})
             }
             return await Votes.destroy({
                 where: {

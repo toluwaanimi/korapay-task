@@ -48,7 +48,7 @@ export default class CommentsController {
     static async removeComment(req: any, res: Response, next: NextFunction) {
         try {
             await CommentsService.deleteComment(req.params, req.user)
-            return handleSuccess(200, "comment deleted", "", req, res)
+            return handleSuccess(200, "comment deleted", undefined, req, res)
         } catch (e) {
             next(e)
         }

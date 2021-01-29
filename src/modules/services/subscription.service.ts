@@ -16,10 +16,12 @@ export class SubscriptionService {
     static async subscribe(data: any, user: any) {
         NotificationHandler.subscribe(`channel-${data.questionId}`)
         try {
-            return await Subscription.create({
-                channel: `channel-${data.questionId}`,
-                userId: user.id,
-                questionId: data.questionId
+            return await Subscription.findOrCreate({
+                where: {
+                    channel: `channel-${data.questionId}`,
+                    userId: user.id,
+                    questionId: data.questionId
+                }
             })
         } catch (e) {
             throw new BadRequestException('failed to create subscription')

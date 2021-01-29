@@ -46,7 +46,7 @@ export class CommentsService {
      */
 
     static async editComment(data: any, user: any) {
-        const comment = await Comments.findOne({where: {id: data.id, userId: user.id}})
+        const comment = await Comments.findOne({where: {id: parseInt(data.id), userId: user.id}})
         if (comment) {
             await Comments.update({comment: data.comment || comment.comment}, {where: {id: data.id, userId: user.id}})
             return Comments.findOne({where: {id: data.id, userId: user.id}})

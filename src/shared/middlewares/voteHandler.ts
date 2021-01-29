@@ -78,6 +78,7 @@ export default class VoteHandler {
 
 
     static async alreadyUpVotedQuestion(req: any, res: Response, next: NextFunction) {
+        console.log(req.body)
         const answer = await Votes.findOne({
             where: {
                 voteType: 'upvote',

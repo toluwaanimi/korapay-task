@@ -13,8 +13,8 @@ export default class SubscriptionController {
      */
     static async subscribe(req: any, res: Response, next: NextFunction) {
         try {
-            const comments = await SubscriptionService.subscribe(req.body, req.user)
-            return handleSuccess(201, "subscribed", comments, req, res)
+            const subscription = await SubscriptionService.subscribe(req.body, req.user)
+            return handleSuccess(201, "subscribed", subscription[0], req, res)
         } catch (e) {
             next(e)
         }
