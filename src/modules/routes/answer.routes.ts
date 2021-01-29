@@ -2,6 +2,11 @@ import express, {Router} from 'express';
 import isAuthorized from "../../shared/middlewares/isAuthorized";
 import AnswerHandler from '../../shared/middlewares/answerHandler'
 import AnswerController from "../controllers/answer.controller";
+import {
+    validateCreateAnswerBody,
+    validateMarkAnswerParams,
+    validateOneAnswerParams
+} from "../../shared/validations/answer.validation";
 
 const router = express.Router();
 
@@ -15,7 +20,7 @@ const router = express.Router();
  * @apiParam  {String} [status] Status
  * @apiSuccess (200) {Object} mixed `User` object
  */
-router.post('/:id', isAuthorized, AnswerController.create)
-router.put('/:id', [isAuthorized, AnswerHandler.validateUserAcceptAnswerRequest], AnswerController.markRight)
-router.delete('/', isAuthorized, AnswerController.deleteOne)
+router.post('/:id', [isAuthorized, validateCreateAnswerBody, validateOneAnswerParams], AnswerController.create)
+router.put('/:questionId/:id', [isAuthorized, validateMarkAnswerParams, AnswerHandler.validateUserAcceptAnswerRequest], AnswerController.markRight)
+router.delete('/:id', [isAuthorized, validateOneAnswerParams], AnswerController.deleteOne)
 export const answerRoutes: Router = router

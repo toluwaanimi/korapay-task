@@ -1,5 +1,6 @@
 import {Answers} from "../../models/Answers";
 import NotificationHandler from "../event/NotificationHandler";
+import BadRequestException from "../../shared/exception/BadRequestException";
 
 /**
  *@class AnswerService
@@ -14,15 +15,21 @@ export class AnswerService {
      * @param user
      */
     static async submit(data: any, user: any) {
-        await NotificationHandler.notifyUsers({
-            userId: user.id,
-            questionId: data.id
-        })
-        return await Answers.create({
-            questionId: data.id,
-            answer: data.answer,
-            userId: user.id
-        })
+        try {
+            const answer = await Answers.create({
+                questionId: data.id,
+                answer: data.answer,
+                userId: user.id
+            })
+
+            await NotificationHandler.notifyUsers({
+                userId: user.id,
+                questionId: data.id
+            })
+            return answer
+        } catch (e) {
+            throw new BadRequestException('could not submit answer')
+        }
     }
 
 
@@ -33,8 +40,19 @@ export class AnswerService {
      * @param data
      */
     static async markRight(data: any) {
-        await Answers.update({is_answer: true}, {where: {is_answer: false, id: data.id}})
-        return Answers.findOne({where: {id: data.id}})
+        try {
+            return await Answers.update({is_answer: true}, {
+                where: {
+                    is_answer: false,
+                    id: data.id,
+                    questionId: data.questionId
+                }
+            })
+
+        } catch (e) {
+            throw new BadRequestException('could not mark the answer right')
+        }
+
     }
 
     /**
@@ -45,6 +63,11 @@ export class AnswerService {
      * @param user
      */
     static async deleteOne(data: any, user: any) {
-        return await Answers.destroy({where: {id: data.id, userId: user.id}})
+        try {
+            return await Answers.destroy({where: {id: data.id, userId: user.id}})
+
+        } catch (e) {
+            throw new BadRequestException('failed to delete answer')
+        }
     }
 }

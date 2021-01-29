@@ -16,10 +16,10 @@ export default class AnswerHandler {
      * @returns handleFailure
      */
     static async validateUserAcceptAnswerRequest(req: any, res: Response, next: NextFunction) {
-        const id = req.params;
+        const questionId = req.params.questionId;
         const user = req.user.id
-        const question = await Questions.findOne({where: {id, userId: user}})
-        if (!question) return handleFailure(400, "you cant make this answer right because you didnt ask the question", [], req, res)
+        const question = await Questions.findOne({where: {id: questionId, userId: user}})
+        if (!question) return handleFailure(400, "you cant make this answer right because you didnt ask the question", undefined, req, res)
         next()
     }
 }

@@ -12,7 +12,7 @@ export default class VoteHandler {
         const question = await Questions.findOne({where: {id: 2, userId: user}})
         if (question) return handleFailure(400, "you cant vote your question", undefined, req, res)
         // @ts-ignore
-        const voteExist = await Votes.findOne({where: {questionId: question.id}})
+        // const voteExist = await Votes.findOne({where: {questionId: question.id}})
         next()
     }
 
@@ -37,17 +37,7 @@ export default class VoteHandler {
         next()
     }
 
-    static async alreadyUpVotedQuestion(req: any, res: Response, next: NextFunction) {
-        const answer = await Votes.findOne({
-            where: {
-                voteType: 'upvote',
-                userId: req.user.id,
-                questionId: req.body.questionId
-            }
-        })
-        if (answer) return handleFailure(statusCode.BAD_REQUEST, "already upvoted the question, kindly undo your vote", undefined, req, res)
-        next()
-    }
+
 
     static async alreadyDownVotedAnswer(req: any, res: Response, next: NextFunction) {
         const answer = await Votes.findOne({
@@ -61,17 +51,6 @@ export default class VoteHandler {
         next()
     }
 
-    static async alreadyDownVotedQuestion(req: any, res: Response, next: NextFunction) {
-        const answer = await Votes.findOne({
-            where: {
-                voteType: 'downvote',
-                userId: req.user.id,
-                questionId: req.body.questionId
-            }
-        })
-        if (answer) return handleFailure(statusCode.BAD_REQUEST, "already down voted the answer, kindly undo your vote", undefined, req, res)
-        next()
-    }
 
     static async validateUpVote(req: any, res: Response, next: NextFunction) {
         const answer = await Votes.findOne({
@@ -98,4 +77,53 @@ export default class VoteHandler {
     }
 
 
+    static async alreadyUpVotedQuestion(req: any, res: Response, next: NextFunction) {
+        const answer = await Votes.findOne({
+            where: {
+                voteType: 'upvote',
+                userId: req.user.id,
+                questionId: req.body.questionId
+            }
+        })
+        if (answer) return handleFailure(statusCode.BAD_REQUEST, "already upvoted the question, kindly undo your vote", undefined, req, res)
+        next()
+    }
+
+
+    static async alreadyDownVotedQuestion(req: any, res: Response, next: NextFunction) {
+        const answer = await Votes.findOne({
+            where: {
+                voteType: 'downvote',
+                userId: req.user.id,
+                questionId: req.body.questionId
+            }
+        })
+        if (answer) return handleFailure(statusCode.BAD_REQUEST, "already down voted the question, kindly undo your vote", undefined, req, res)
+        next()
+    }
+
+
+    static async validateUpQuestion(req: any, res: Response, next: NextFunction) {
+        const answer = await Votes.findOne({
+            where: {
+                voteType: 'upvote',
+                userId: req.user.id,
+                questionId: req.body.questionId
+            }
+        })
+        if (!answer) return handleFailure(statusCode.NOT_FOUND, "no vote casted", undefined, req, res)
+        next()
+    }
+
+    static async validateDownQuestion(req: any, res: Response, next: NextFunction) {
+        const answer = await Votes.findOne({
+            where: {
+                voteType: 'downvote',
+                userId: req.user.id,
+                questionId: req.body.questionId
+            }
+        })
+        if (!answer) return handleFailure(statusCode.NOT_FOUND, "no vote casted", undefined, req, res)
+        next()
+    }
 }

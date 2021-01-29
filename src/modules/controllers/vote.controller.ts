@@ -71,4 +71,73 @@ export default class VoteController {
         }
     }
 
+
+    /**
+     * @method  upVoteQuestion
+     * @description helps an existing user upvote an question
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
+    static async upVoteQuestion(req: any, res: Response, next: NextFunction) {
+        try {
+            const votes = await VoteService.upVoteQuestion(req.body, req.user)
+            return handleSuccess(201, "upVoteAnswer created", votes, req, res)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    /**
+     * @method  undoUpVoteQuestion
+     * @description helps an existing user undo their upvote entry for an question
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
+    static async undoUpVoteQuestion(req: any, res: Response, next: NextFunction) {
+        try {
+            const vote = await VoteService.undoUpVoteQuestion(req.body, req.user)
+            return handleSuccess(200, "vote removed", undefined, req, res)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    /**
+     * @method  downVoteQuestion
+     * @description helps an existing user downvote an question
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
+    static async downVoteQuestion(req: any, res: Response, next: NextFunction) {
+        try {
+            const votes = await VoteService.downVoteQuestion(req.body, req.user)
+            return handleSuccess(201, "downVoteAnswer created", votes, req, res)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    /**
+     * @method  undoDownVoteQuestion
+     * @description helps an existing user undo their downvote entry for an question
+     * @param {*} req
+     * @param {*} res
+     * @param {*} next
+     * @returns handleSuccess
+     */
+    static async undoDownVoteQuestion(req: any, res: Response, next: NextFunction) {
+        try {
+            const vote = await VoteService.undoDownVoteQuestion(req.body, req.user)
+            return handleSuccess(200, "undoDownVoteAnswer removed", undefined, req, res)
+        } catch (e) {
+            next(e)
+        }
+    }
+
 }

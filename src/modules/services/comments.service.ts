@@ -1,6 +1,7 @@
 import {Comments} from "../../models/Comments";
 import NotFoundException from "../../shared/exception/NotFoundException";
 import NotificationHandler from "../event/NotificationHandler";
+import BadRequestException from "../../shared/exception/BadRequestException";
 
 
 /**
@@ -16,16 +17,24 @@ export class CommentsService {
      * @param user
      */
     static async create(data: any, user: any) {
-        await NotificationHandler.notifyUsers({
-            userId: user.id,
-            questionId: data.questionId
-        })
-        return await Comments.create({
-            comment: data.comment,
-            answerId: data.answerId,
-            questionId: data.questionId,
-            userId: user.id
-        })
+        try {
+            const comment = await Comments.create({
+                comment: data.comment,
+                answerId: data.answerId,
+                questionId: data.questionId,
+                userId: user.id
+            })
+
+            await NotificationHandler.notifyUsers({
+                userId: user.id,
+                questionId: data.questionId
+            })
+            return comment
+        } catch (e) {
+            throw new BadRequestException('could not save comment')
+        }
+
+
     }
 
     /**
@@ -54,7 +63,12 @@ export class CommentsService {
      * @param user
      */
     static async deleteComment(data: any, user: any) {
-        return await Comments.destroy({where: {userId: user.id, id: data.id}})
+        try {
+            return await Comments.destroy({where: {userId: user.id, id: data.id}})
+
+        } catch (e) {
+            throw new BadRequestException('could not delete comment')
+        }
     }
 
 }

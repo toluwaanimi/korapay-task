@@ -14,12 +14,12 @@ const isAuthorized = async (req: any, res: Response, next: NextFunction) => {
     const {authorization} = req.headers;
 
     if (typeof authorization === 'undefined') {
-        return handleFailure(401, 'Unauthorized - Header Not Set', "", req, res);
+        return handleFailure(401, 'Unauthorized - Header Not Set', undefined, req, res);
     }
     // @ts-ignore
     const token = authorization.split(' ')[1];
     if (!token) {
-        return handleFailure(401, 'Access Denied. Please Log In.', "", req, res,);
+        return handleFailure(401, 'Access Denied. Please Log In.', undefined, req, res,);
     }
 
     try {
@@ -27,7 +27,7 @@ const isAuthorized = async (req: any, res: Response, next: NextFunction) => {
         req.user = await Users.findByPk(decoded.id);
         next();
     } catch (error) {
-        return handleFailure(401, 'Error in verification. Please try again', "", req, res);
+        return handleFailure(401, 'Error in verification. Please try again', undefined, req, res);
     }
 }
 

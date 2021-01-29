@@ -1,6 +1,7 @@
 import express, {Router} from 'express';
 import QuestionController from "../controllers/question.controller";
 import isAuthorized from "../../shared/middlewares/isAuthorized";
+import {validateCreateQuestionBody, validateFindOneQuestionParams} from "../../shared/validations/question.validation";
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ const router = express.Router();
  * @apiSuccess (200) {Object} mixed `User` object
  */
 router.get('/', QuestionController.findAll)
-router.get('/:id', QuestionController.findOneQuestion)
+router.get('/:id', [validateFindOneQuestionParams], QuestionController.findOneQuestion)
 // router.get('/list', isAuthorized, QuestionController.findUserQuestions)
-router.post('/', isAuthorized, QuestionController.create)
+router.post('/', isAuthorized, [validateCreateQuestionBody], QuestionController.create)
 export const questionRoutes: Router = router

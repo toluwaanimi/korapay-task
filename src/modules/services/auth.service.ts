@@ -22,8 +22,13 @@ export default class AuthService {
         if (await Users.findOne({where: {email: body.email}})) {
             throw new UserWithThatEmailAlreadyExistsException(body.email)
         }
-        const user = await Users.create(body)
-        return generateToken({id: user.id})
+        try {
+            const user = await Users.create(body)
+            return generateToken({id: user.id})
+        } catch (e) {
+            throw new BadRequestException('failed to create an account')
+        }
+
     }
 
 

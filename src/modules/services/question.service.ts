@@ -2,6 +2,7 @@ import {Questions} from "../../models/Questions";
 import {Answers} from "../../models/Answers";
 import NotFoundException from "../../shared/exception/NotFoundException";
 import {Comments} from "../../models/Comments";
+import BadRequestException from "../../shared/exception/BadRequestException";
 
 
 /**
@@ -18,21 +19,26 @@ export class QuestionService {
      * @param user
      */
     static async create(data: any, user: any) {
-        const question = await Questions.create({
-            title: data.title,
-            question: data.question,
-            userId: user.id
-        })
-        if (data.answer) {
-            await Answers.create({
-                answer: data.answer,
-                questionId: question.id,
+        try {
+            const question = await Questions.create({
+                title: data.title,
+                question: data.question,
                 userId: user.id
             })
-            return question
-        } else {
-            return question
+            if (data.answer) {
+                await Answers.create({
+                    answer: data.answer,
+                    questionId: question.id,
+                    userId: user.id
+                })
+                return question
+            } else {
+                return question
+            }
+        } catch (e) {
+            throw new BadRequestException('failed to create question')
         }
+
     }
 
 

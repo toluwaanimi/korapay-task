@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import {handleSuccess} from "../../shared/utils/responseHandler";
+import {handleFailure, handleSuccess} from "../../shared/utils/responseHandler";
 import {AnswerService} from "../services/answer.service";
 
 export default class AnswerController {
@@ -30,8 +30,10 @@ export default class AnswerController {
      */
     static async markRight(req: any, res: Response, next: NextFunction) {
         try {
-            const answer = await AnswerService.markRight({id: req.params.id})
-            return handleSuccess(200, "answer marked", answer, req, res)
+            const answer = await AnswerService.markRight({id: req.params.id, questionId: req.params.questionId})
+            if (answer[0]) return handleSuccess(200, "answer marked", undefined, req, res)
+            return handleFailure(400, "couldn't mark right", undefined, req, res)
+
         } catch (e) {
             next(e)
         }
@@ -47,7 +49,12 @@ export default class AnswerController {
      */
     static async deleteOne(req: any, res: Response, next: NextFunction) {
         try {
-            await AnswerService.deleteOne({id: req.params.id}, req.user)
+            const answer = await AnswerService.deleteOne({id: req.params.id}, req.user)
+            if (answer) {
+                return handleSuccess(200, "answer deleted", undefined, req, res)
+            }
+            return handleFailure(400, "failed to delete", undefined, req, res)
+
         } catch (e) {
             next(e)
         }

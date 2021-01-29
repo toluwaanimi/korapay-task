@@ -2,8 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b15a1d-dc4b-4c6c-9b0f-0aa6a28367d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modules/routes/questionsVote.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/middlewares/commentHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/validations/subscription.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/validations/vote.validation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/controllers/answer.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/controllers/answer.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/controllers/vote.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/controllers/vote.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/routes/answer.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/routes/answer.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/routes/comment.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/routes/comment.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/routes/question.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/routes/question.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/routes/subscription.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/routes/subscription.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/routes/vote.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/routes/answersVote.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/answer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/answer.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/comments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/comments.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/question.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/subscription.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/subscription.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/services/vote.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/vote.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/middlewares/answerHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/middlewares/answerHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/middlewares/isAuthorized.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/middlewares/isAuthorized.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/middlewares/voteHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/middlewares/voteHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/utils/Validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/Validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/validations/answer.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/validations/answer.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/validations/comment.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/validations/comment.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/validations/question.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/validations/question.validation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +131,10 @@
       <updated>1611429036808</updated>
       <workItem from="1611429039591" duration="38398000" />
       <workItem from="1611591012595" duration="16170000" />
-      <workItem from="1611695067579" duration="25435000" />
+      <workItem from="1611695067579" duration="27344000" />
+      <workItem from="1611791176192" duration="128000" />
+      <workItem from="1611919992668" duration="1908000" />
+      <workItem from="1611922732121" duration="6557000" />
     </task>
     <servers />
   </component>

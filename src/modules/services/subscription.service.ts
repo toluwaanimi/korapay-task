@@ -1,5 +1,6 @@
 import {Subscription} from "../../models/Subscription";
 import NotificationHandler from "../event/NotificationHandler";
+import BadRequestException from "../../shared/exception/BadRequestException";
 
 /**
  * @class SubscriptionService
@@ -14,10 +15,15 @@ export class SubscriptionService {
      */
     static async subscribe(data: any, user: any) {
         NotificationHandler.subscribe(`channel-${data.questionId}`)
-        return await Subscription.create({
-            channel: `channel-${data.questionId}`,
-            userId: user.id,
-            questionId: data.questionId
-        })
+        try {
+            return await Subscription.create({
+                channel: `channel-${data.questionId}`,
+                userId: user.id,
+                questionId: data.questionId
+            })
+        } catch (e) {
+            throw new BadRequestException('failed to create subscription')
+        }
+
     }
 }
