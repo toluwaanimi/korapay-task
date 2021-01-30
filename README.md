@@ -112,6 +112,11 @@ yarn add
       npm run start
          ```
 
+* To run test cases
+    * ```markdown
+      npm run test
+         ```
+
 ---
 
 ## Implementation Required
