@@ -32,7 +32,6 @@ The postman documentation can be accessed [here](https://documenter.getpostman.c
 
 To Install NodeJS, kindly go to [Nodejs](https://nodejs.com) and follow the necessary instructions required depending on
 your PC Operating System
----
 
 ## MACOS
 
