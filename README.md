@@ -71,7 +71,7 @@ install Postgres on your local PC which explains how to create a database
 ## Setup Database
 
 To setup your database for the project, after creation kindly open the sequelize.ts file in the src folder of the
-project
+project and replace with your credentials
 
 ```markdown
     database: 'your database name',
