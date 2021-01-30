@@ -19,7 +19,7 @@ export default class AuthService {
      * @param body
      */
     static async createAccount(body: createUserDTO) {
-        if (await Users.findOne({where: {email: body.email}})) {
+        if (await Users.findOne({where: {email: body.email}, logging: false})) {
             throw new UserWithThatEmailAlreadyExistsException(body.email)
         }
         try {

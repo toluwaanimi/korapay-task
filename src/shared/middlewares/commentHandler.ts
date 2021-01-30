@@ -21,7 +21,7 @@ export default class CommentHandler {
         const user = await Users.findOne({where: {id}})
         // @ts-ignore
         if (user?.reputation < 50) return handleFailure(400, "you cant make this comment your reputation is below 50", undefined, req, res)
-        const question = await Questions.findOne({where: {id: req.body.questionId}})
+        const question = await Questions.findOne({where: {id: req.body.questionId}, logging: false})
         if (!question) return handleFailure(404, "invalid question id", undefined, req, res,)
         next()
     }

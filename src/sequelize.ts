@@ -8,4 +8,5 @@ export const sequelize = new Sequelize({
     username: 'emmanuel',
     password: 'password',
     models: [__dirname + '/models'],
+
 });

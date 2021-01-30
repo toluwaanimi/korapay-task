@@ -46,7 +46,8 @@ export class AnswerService {
                     is_answer: false,
                     id: data.id,
                     questionId: data.questionId
-                }
+                },
+                logging: false
             })
 
         } catch (e) {
@@ -64,7 +65,7 @@ export class AnswerService {
      */
     static async deleteOne(data: any, user: any) {
         try {
-            return await Answers.destroy({where: {id: data.id, userId: user.id}})
+            return await Answers.destroy({where: {id: data.id, userId: user.id}, logging: false})
 
         } catch (e) {
             throw new BadRequestException('failed to delete answer')

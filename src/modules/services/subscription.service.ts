@@ -21,7 +21,8 @@ export class SubscriptionService {
                     channel: `channel-${data.questionId}`,
                     userId: user.id,
                     questionId: data.questionId
-                }
+                },
+                logging: false
             })
         } catch (e) {
             throw new BadRequestException('failed to create subscription')

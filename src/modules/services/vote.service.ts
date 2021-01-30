@@ -25,27 +25,28 @@ export class VoteService {
                         voteType: 'downvote',
                         userId: user.id,
                         answerId: data.answerId
-                    }
+                    },
+                    logging: false
                 })) {
                     await Votes.destroy({
                         where: {
                             voteType: 'downvote',
                             userId: user.id,
                             answerId: data.answerId
-                        }
+                        },
+                        logging: false
                     })
                     await Answers.update({
                         counts: answer?.counts + 2
-                    }, {where: {id: data.answerId}})
+                    }, {where: {id: data.answerId}, logging: false})
                 }
                 await Answers.update({
                     counts: answer?.counts + 1
-                }, {where: {id: data.answerId}})
-                const answererUser = await Users.findOne({where: {id: answer.userId}})
+                }, {where: {id: data.answerId},logging: false})
+                const answererUser = await Users.findOne({where: {id: answer.userId}, logging: false})
 
                 // @ts-ignore
-                const userd = await Users.update({reputation: parseInt(answererUser?.reputation) + 10}, {where: {id: answer.userId}})
-                console.log(userd)
+              await Users.update({reputation: parseInt(answererUser?.reputation) + 10}, {where: {id: answer.userId}, logging: false})
                 return await Votes.create({
                     voteType: 'upvote',
                     userId: user.id,
@@ -68,24 +69,25 @@ export class VoteService {
      */
     static async undoUpVoteAnswer(data: any, user: any) {
         try {
-            const answer = await Answers.findOne({where: {id: data.answerId}})
+            const answer = await Answers.findOne({where: {id: data.answerId}, logging: false})
             if (answer) {
                 await Answers.update({
                     counts: answer?.counts - 1
-                }, {where: {id: data.answerId}})
+                }, {where: {id: data.answerId}, logging: false})
 
                 // const activeUser = await Users.findOne({where : {id : user.id}})
                 // await Users.update({},{where: {}})
-                const answererUser = await Users.findOne({where: {id: answer.userId}})
+                const answererUser = await Users.findOne({where: {id: answer.userId}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: ((answererUser?.reputation - 10) < 1) ? 1 : answererUser?.reputation - 10}, {where: {id: answer.userId}})
+                await Users.update({reputation: ((answererUser?.reputation - 10) < 1) ? 1 : answererUser?.reputation - 10}, {where: {id: answer.userId}, logging: false})
             }
             return await Votes.destroy({
                 where: {
                     voteType: 'upvote',
                     userId: user.id,
                     answerId: data.answerId
-                }
+                },
+                logging: false
             })
         } catch (e) {
             throw new BadRequestException('something went wrong')
@@ -102,39 +104,41 @@ export class VoteService {
      */
     static async downVoteAnswer(data: any, user: any) {
         try {
-            const answer = await Answers.findOne({where: {id: data.answerId}})
+            const answer = await Answers.findOne({where: {id: data.answerId}, logging: false})
             if (answer) {
                 if (await Votes.findOne({
                     where: {
                         voteType: 'upvote',
                         userId: user.id,
                         answerId: data.answerId
-                    }
+                    },
+                    logging: false
                 })) {
                     await Votes.destroy({
                         where: {
                             voteType: 'upvote',
                             userId: user.id,
                             answerId: data.answerId
-                        }
+                        },
+                        logging: false
                     })
                     await Answers.update({
                         counts: answer?.counts - 2
-                    }, {where: {id: data.answerId}})
+                    }, {where: {id: data.answerId}, logging: false})
                 } else {
                     await Answers.update({
                         counts: answer?.counts - 1
-                    }, {where: {id: data.answerId}})
+                    }, {where: {id: data.answerId},logging: false})
                 }
 
-                const activeUser = await Users.findOne({where: {id: user.id}})
+                const activeUser = await Users.findOne({where: {id: user.id}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: ((activeUser?.reputation - 1) < 1) ? 1 : activeUser?.reputation - 1}, {where: {id: user.id}})
+                await Users.update({reputation: ((activeUser?.reputation - 1) < 1) ? 1 : activeUser?.reputation - 1}, {where: {id: user.id}, logging: false})
 
 
-                const answererUser = await Users.findOne({where: {id: answer.userId}})
+                const answererUser = await Users.findOne({where: {id: answer.userId}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: ((answererUser?.reputation - 2) < 1) ? 1 : answererUser?.reputation - 2}, {where: {id: answer.userId}})
+                await Users.update({reputation: ((answererUser?.reputation - 2) < 1) ? 1 : answererUser?.reputation - 2}, {where: {id: answer.userId}, logging: false})
             }
 
             return await Votes.create({
@@ -157,26 +161,27 @@ export class VoteService {
      */
     static async undoDownVoteAnswer(data: any, user: any) {
         try {
-            const answer = await Answers.findOne({where: {id: data.answerId}})
+            const answer = await Answers.findOne({where: {id: data.answerId}, logging: false})
             if (answer) {
                 await Answers.update({
                     counts: answer?.counts + 1
-                }, {where: {id: data.answerId}})
-                const activeUser = await Users.findOne({where: {id: user.id}})
+                }, {where: {id: data.answerId}, logging: false})
+                const activeUser = await Users.findOne({where: {id: user.id}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: parseInt(activeUser?.reputation) + 1}, {where: {id: user.id}})
+                await Users.update({reputation: parseInt(activeUser?.reputation) + 1}, {where: {id: user.id}, logging: false})
 
 
-                const answererUser = await Users.findOne({where: {id: answer.userId}})
+                const answererUser = await Users.findOne({where: {id: answer.userId}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: parseInt(answererUser?.reputation) + 2}, {where: {id: answer.userId}})
+                await Users.update({reputation: parseInt(answererUser?.reputation) + 2}, {where: {id: answer.userId}, logging: false})
             }
             return await Votes.destroy({
                 where: {
                     voteType: 'downvote',
                     userId: user.id,
                     answerId: data.answerId
-                }
+                },
+                logging: false
             })
         } catch (e) {
             throw new BadRequestException('something went wrong')
@@ -195,33 +200,35 @@ export class VoteService {
      */
     static async upVoteQuestion(data: any, user: any) {
         try {
-            const question = await Questions.findOne({where: {id: data.questionId}})
+            const question = await Questions.findOne({where: {id: data.questionId}, logging: false})
             if (question) {
                 if (await Votes.findOne({
                     where: {
                         voteType: 'downvote',
                         userId: user.id,
                         questionId: data.questionId
-                    }
+                    },
+                    logging: false
                 })) {
                     await Votes.destroy({
                         where: {
                             voteType: 'downvote',
                             userId: user.id,
                             questionId: data.questionId
-                        }
+                        },
+                        logging: false
                     })
                     await Questions.update({
                         counts: question?.counts + 2
-                    }, {where: {id: data.questionId}})
+                    }, {where: {id: data.questionId}, logging: false})
                 } else {
                     await Questions.update({
                         counts: question?.counts + 1
-                    }, {where: {id: data.questionId}})
+                    }, {where: {id: data.questionId}, logging: false})
                 }
-                const answererUser = await Users.findOne({where: {id: question.userId}})
+                const answererUser = await Users.findOne({where: {id: question.userId}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: parseInt(answererUser?.reputation) + 10}, {where: {id: question.userId}})
+                await Users.update({reputation: parseInt(answererUser?.reputation) + 10}, {where: {id: question.userId}, logging: false})
             }
             return await Votes.create({
                 voteType: 'upvote',
@@ -243,23 +250,24 @@ export class VoteService {
      */
     static async undoUpVoteQuestion(data: any, user: any) {
         try {
-            const question = await Questions.findOne({where: {id: data.questionId}})
+            const question = await Questions.findOne({where: {id: data.questionId}, logging: false})
             if (question) {
                 await Answers.update({
                     counts: question?.counts - 1
-                }, {where: {id: data.questionId}})
+                }, {where: {id: data.questionId}, logging: false})
 
                 // const activeUser = await Users.findOne({where : {id : user.id}})
                 // await Users.update({},{where: {}})
-                const answererUser = await Users.findOne({where: {id: question.userId}})
+                const answererUser = await Users.findOne({where: {id: question.userId}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: ((parseInt(answererUser?.reputation) - 10) < 1) ? 1 : parseInt(answererUser?.reputation) - 10}, {where: {id: question.userId}})
+                await Users.update({reputation: ((parseInt(answererUser?.reputation) - 10) < 1) ? 1 : parseInt(answererUser?.reputation) - 10}, {where: {id: question.userId}, logging: false})
                 return await Votes.destroy({
                     where: {
                         voteType: 'upvote',
                         userId: user.id,
                         questionId: data.questionId
-                    }
+                    },
+                    logging: false
                 })
             }
 
@@ -285,33 +293,35 @@ export class VoteService {
                         voteType: 'upvote',
                         userId: user.id,
                         questionId: data.questionId
-                    }
+                    },
+                    logging: false
                 })) {
                     await Votes.destroy({
                         where: {
                             voteType: 'upvote',
                             userId: user.id,
                             questionId: data.questionId
-                        }
+                        },
+                        logging: false
                     })
                     await Questions.update({
                         counts: question?.counts - 2
-                    }, {where: {id: data.questionId}})
+                    }, {where: {id: data.questionId}, logging: false})
                 } else {
                     await Questions.update({
                         counts: question?.counts - 1
-                    }, {where: {id: data.questionId}})
+                    }, {where: {id: data.questionId}, logging: false})
                 }
 
-                const activeUser = await Users.findOne({where: {id: user.id}})
+                const activeUser = await Users.findOne({where: {id: user.id}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: ((activeUser?.reputation - 1) < 1) ? 1 : activeUser?.reputation - 1}, {where: {id: user.id}})
+                await Users.update({reputation: ((activeUser?.reputation - 1) < 1) ? 1 : activeUser?.reputation - 1}, {where: {id: user.id}, logging: false})
 
 
-                const answererUser = await Users.findOne({where: {id: question.userId}})
+                const answererUser = await Users.findOne({where: {id: question.userId}, logging: false})
 
                 // @ts-ignore
-                await Users.update({reputation: ((parseInt(answererUser?.reputation) - 2) < 1) ? 1 : parseInt(answererUser?.reputation) - 2}, {where: {id: question.userId}})
+                await Users.update({reputation: ((parseInt(answererUser?.reputation) - 2) < 1) ? 1 : parseInt(answererUser?.reputation) - 2}, {where: {id: question.userId}, logging: false})
             }
 
             return await Votes.create({
@@ -335,26 +345,30 @@ export class VoteService {
      */
     static async undoDownVoteQuestion(data: any, user: any) {
         try {
-            const question = await Questions.findOne({where: {id: data.questionId}})
+            const question = await Questions.findOne({where: {id: data.questionId}, logging: false})
             if (question) {
                 await Questions.update({
                     counts: question?.counts + 1
-                }, {where: {id: data.questionId}})
+                }, {where: {id: data.questionId}, logging: false})
                 const activeUser = await Users.findOne({where: {id: user.id}})
                 // @ts-ignore
-                await Users.update({reputation: (parseInt(activeUser?.reputation) + 1)}, {where: {id: user.id}})
+                await Users.update({reputation: (parseInt(activeUser?.reputation) + 1)}, {
+                    where: {id: user.id},
+                    logging: false
+                })
 
 
-                const answererUser = await Users.findOne({where: {id: question.userId}})
+                const answererUser = await Users.findOne({where: {id: question.userId}, logging: false})
                 // @ts-ignore
-                await Users.update({reputation: parseInt(answererUser?.reputation) + 2}, {where: {id: question.userId}})
+                await Users.update({reputation: parseInt(answererUser?.reputation) + 2}, {where: {id: question.userId}, logging: false})
             }
             return await Votes.destroy({
                 where: {
                     voteType: 'downvote',
                     userId: user.id,
                     questionId: data.questionId
-                }
+                },
+                logging: false
             })
         } catch (e) {
             throw new BadRequestException('something went wrong')

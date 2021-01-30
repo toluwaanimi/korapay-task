@@ -61,7 +61,8 @@ export class QuestionService {
                     model: Comments,
                     as: 'comments'
                 }]
-            }]
+            }],
+            logging: false
         })
     }
 
@@ -81,10 +82,11 @@ export class QuestionService {
                     model: Comments,
                     as: 'comments'
                 }]
-            }]
+            }],
+            logging: false
         })
         if (question) {
-            await Questions.update({views: question.views + 1}, {where: {id: data.id}})
+            await Questions.update({views: question.views + 1}, {where: {id: data.id}, logging: false})
             return question
         } else {
             throw new NotFoundException('invalid question id')
@@ -107,7 +109,8 @@ export class QuestionService {
                     model: Comments,
                     as: 'comments'
                 }]
-            }]
+            }],
+            logging: false
         })
     }
 
