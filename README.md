@@ -1,4 +1,5 @@
 # Stackoverflow Documentation
+
 The stackoverflow task is basic implementation of [Stackoverflow](https://stackoverflow.com)
 
 ## Author 🚀
@@ -63,7 +64,6 @@ For Windows users, you can kindly follow this
 tutorials [here](https://learnsql.com/blog/how-to-install-postgresql-on-windows-in-5-minutes/) to install Postgres on
 your local PC which explains how to create a database
 
-
 For Mac users, you can kindly follow this tutorials [here](https://www.robinwieruch.de/postgres-sql-macos-setup)  to
 install Postgres on your local PC which explains how to create a database
 
@@ -87,6 +87,7 @@ Kindly replace these values with the appropriate values based on your Database e
 ---
 
 ## Start Development
+
 Kindly clone the repo `https://gitlab.com/korapay-engineering/bems-emm-ade.git`
 
 ### Installation
@@ -139,6 +140,7 @@ Bonus Task
 
    The primary way to gain reputation is by posting good questions and useful answers. Votes on these posts cause you to
    gain (or sometimes lose) reputation.
+   > `NOTE:` A user reputation can't go less than 1
 
 2. You gain reputation when :
     * question is voted up: +10
@@ -155,7 +157,6 @@ Bonus Task
 ## Things implemented
 
 > `NOTE:` when making request to protected routes , add `Bearer` to the prefix of the token. eg 'Bearer JWT TOKEN'.
->
 
 * Authentication
     * Registration
@@ -192,7 +193,7 @@ Bonus Task
 
 * Reputation
 
-  All rules of stackoverflow were followed regarding upvote and downvote for questions and answers
+> `NOTE:` All rules of stackoverflow were followed regarding reputation, upvote and downvote for questions and answers
 
 ---
 
