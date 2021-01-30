@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="43b15a1d-dc4b-4c6c-9b0f-0aa6a28367d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/controllers/question.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/controllers/question.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/event/NotificationHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/event/NotificationHandler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/services/answer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/answer.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/services/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/question.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/services/subscription.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/subscription.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/services/vote.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/vote.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sequelize.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequelize.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/middlewares/voteHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/middlewares/voteHandler.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +116,7 @@
       <workItem from="1611791176192" duration="128000" />
       <workItem from="1611919992668" duration="1908000" />
       <workItem from="1611922732121" duration="29828000" />
-      <workItem from="1612038589755" duration="844000" />
+      <workItem from="1612038589755" duration="3803000" />
     </task>
     <servers />
   </component>
