@@ -1,15 +1,15 @@
 import {
-    Model,
-    Column,
-    Table,
-    BelongsToMany,
-    CreatedAt,
-    UpdatedAt,
     AutoIncrement,
-    PrimaryKey, DataType, ForeignKey, BelongsTo
-} from "sequelize-typescript";
+    BelongsTo,
+    BelongsToMany,
+    Column,
+    CreatedAt,
+    DataType,
+    ForeignKey,
+    Model, PrimaryKey, Table, UpdatedAt
+} from 'sequelize-typescript';
 
-import {Users} from "./Users";
+import {Users} from './Users';
 
 @Table({tableName: 'vote_rate'})
 export class Rater extends Model {
@@ -17,30 +17,30 @@ export class Rater extends Model {
     @AutoIncrement
     @PrimaryKey
     @Column(DataType.INTEGER)
-    id!: number
+    public id!: number
 
 
     @Column(DataType.INTEGER)
-    counts !: number
+    public counts !: number
 
     @Column(DataType.STRING)
-    date !: string
+    public date !: string
 
     @BelongsTo(() => Users)
-    users!: Users
+    public users!: Users
 
     @ForeignKey(() => Users)
     @Column(DataType.INTEGER)
-    userId !: number
+    public userId !: number
 
 
     @CreatedAt
     @Column(DataType.DATE)
-    createdAt!: Date;
+    public createdAt!: Date;
 
     @UpdatedAt
     @Column(DataType.DATE)
-    updatedAt!: Date;
+    public updatedAt!: Date;
 
 
 }

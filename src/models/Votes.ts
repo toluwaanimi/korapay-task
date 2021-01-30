@@ -1,17 +1,17 @@
-import {
-    Model,
-    Column,
-    Table,
-    BelongsToMany,
-    CreatedAt,
-    UpdatedAt,
-    AutoIncrement,
-    PrimaryKey, DataType, HasOne, HasMany, Unique, ForeignKey, BelongsTo, Default,
-} from "sequelize-typescript";
-import {Questions} from "./Questions";
 import bcrypt from 'bcrypt'
-import {Users} from "./Users";
-import {Answers} from "./Answers";
+import {
+    AutoIncrement,
+    BelongsTo,
+    BelongsToMany,
+    Column,
+    CreatedAt,
+    DataType,
+    Default,
+    ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table, Unique, UpdatedAt,
+} from 'sequelize-typescript';
+import {Answers} from './Answers';
+import {Questions} from './Questions';
+import {Users} from './Users';
 
 type VoterStatus = 'upvote' | 'downvote';
 
@@ -21,45 +21,45 @@ export class Votes extends Model {
     @AutoIncrement
     @PrimaryKey
     @Column(DataType.INTEGER)
-    id!: number
+    public id!: number
 
 
 
     @Column(DataType.ENUM('upvote', 'downvote'))
-    voteType !: VoterStatus
+    public voteType !: VoterStatus
 
 
 
     @BelongsTo(() => Answers)
-    answers!: Answers
+    public answers!: Answers
 
     @ForeignKey(() => Answers)
     @Column(DataType.INTEGER)
-    answerId !: number
+    public answerId !: number
 
 
     @BelongsTo(() => Questions)
-    questions!: Questions
+    public questions!: Questions
 
     @ForeignKey(() => Questions)
     @Column(DataType.INTEGER)
-    questionId !: number
+    public questionId !: number
 
 
     @BelongsTo(() => Users)
-    users!: Users
+    public users!: Users
 
     @ForeignKey(() => Users)
     @Column(DataType.INTEGER)
-    userId !: number
+    public userId !: number
 
     @CreatedAt
     @Column(DataType.DATE)
-    createdAt!: Date;
+    public createdAt!: Date;
 
     @UpdatedAt
     @Column(DataType.DATE)
-    updatedAt!: Date;
+    public updatedAt!: Date;
 
 
 }

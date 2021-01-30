@@ -42,7 +42,7 @@ export class AnswerService {
      */
     static async markRight(data: any) {
         try {
-            await Answers.update({is_answer: true}, {
+            const answer = await Answers.update({is_answer: true}, {
                 where: {
                     is_answer: false,
                     id: data.id,
@@ -55,7 +55,7 @@ export class AnswerService {
             const user = await Users.findOne({id: userThatAnsweredId?.userId})
             // @ts-ignore
             await Users.update({reputation: parseInt(user?.reputation) + 15}, {where: {id: user.id}})
-
+            return answer
         } catch (e) {
             throw new BadRequestException('could not mark the answer right')
         }

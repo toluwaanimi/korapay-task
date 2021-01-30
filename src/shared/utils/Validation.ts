@@ -1,5 +1,5 @@
 import validator from 'validator';
-import {handleFailure} from "./responseHandler";
+import {handleFailure} from './responseHandler';
 
 
 /**
@@ -36,7 +36,7 @@ const isEmpty = (body: any, req: any, res: any, next: any) => {
         return check;
     });
     if (Object.keys(check).length !== 0) {
-        return handleFailure(400, "bad request", check, req, res)
+        return handleFailure(400, 'bad request', check, req, res)
     }
     return next();
 };
@@ -53,7 +53,7 @@ const isEmpty = (body: any, req: any, res: any, next: any) => {
 const validateRequired = (req: any, res: any, next: any, options: any, extra: any) => {
     const requiredFields = fieldRequired(req.body, options);
     if ((typeof requiredFields === 'object') && requiredFields.length > 0) {
-        return handleFailure(400, "bad request", requiredFields.map((err: any) => err), req, res)
+        return handleFailure(400, 'bad request', requiredFields.map((err: any) => err), req, res)
     }
     if (extra) return isEmpty(extra, req, res, next);
     return next();
@@ -63,7 +63,7 @@ const validateRequired = (req: any, res: any, next: any, options: any, extra: an
 const validateParamsRequired = (req: any, res: any, next: any, options: any, extra: any) => {
     const requiredFields = fieldRequired(req.params, options);
     if ((typeof requiredFields === 'object') && requiredFields.length > 0) {
-        return handleFailure(400, "bad request", requiredFields.map((err: any) => err), req, res)
+        return handleFailure(400, 'bad request', requiredFields.map((err: any) => err), req, res)
     }
     if (extra) return isEmpty(extra, req, res, next);
     return next();

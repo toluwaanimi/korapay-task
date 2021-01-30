@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
-import {Request, Response} from "express";
-import {handleFailure} from "./responseHandler";
+import {Request, Response} from 'express';
+import jwt from 'jsonwebtoken';
+import {handleFailure} from './responseHandler';
 
-const secret: string = process.env.JWT_SECRET || "key"
+const secret: string = process.env.JWT_SECRET || 'key'
 
 
 interface Payload {
@@ -28,7 +28,7 @@ const generateToken = async (payload: Payload, exp = '30d') => {
  */
 const verifyToken = (token: any, req: Request, res: Response): any => jwt.verify(token, secret, (err: any, decoded: any) => {
     if (err) {
-        return handleFailure(401, "unauthorized", "", req, res)
+        return handleFailure(401, 'unauthorized', '', req, res)
     }
     return decoded;
 });

@@ -1,6 +1,6 @@
-import {NextFunction, Request, Response} from "express";
-import AuthService from "../services/auth.service";
-import {handleSuccess} from "../../shared/utils/responseHandler";
+import {NextFunction, Request, Response} from 'express';
+import {handleSuccess} from '../../shared/utils/responseHandler';
+import AuthService from '../services/auth.service';
 
 export default class AuthController {
 
@@ -12,10 +12,10 @@ export default class AuthController {
      * @param {*} next
      * @returns handleSuccess
      */
-    static async createAccount(req: Request, res: Response, next: NextFunction) {
+    public static async createAccount(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await AuthService.createAccount(req.body)
-            return handleSuccess(201, "account created", {token: user}, req, res)
+            return handleSuccess(201, 'account created', {token: user}, req, res)
         } catch (e) {
             next(e)
         }
@@ -29,10 +29,10 @@ export default class AuthController {
      * @param {*} next
      * @returns handleSuccess
      */
-    static async login(req: Request, res: Response, next: NextFunction) {
+    public static async login(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await AuthService.login(req.body)
-            return handleSuccess(200, "successful login", {token: user}, req, res)
+            return handleSuccess(200, 'successful login', {token: user}, req, res)
         } catch (e) {
             next(e)
         }

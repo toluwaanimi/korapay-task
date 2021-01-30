@@ -105,6 +105,13 @@ yarn add
     * ```markdown 
       npm run dev
       ```
+      
+* To build your app for production
+    * ```markdown
+      npm run build
+         ```
+
+
 
 * To run your app server for production
     * ```markdown

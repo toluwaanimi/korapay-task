@@ -1,17 +1,17 @@
 import {
-    Model,
-    Column,
-    Table,
-    BelongsToMany,
-    CreatedAt,
-    UpdatedAt,
     AutoIncrement,
-    PrimaryKey, DataType, HasOne, ForeignKey, BelongsTo, HasMany, Default
-} from "sequelize-typescript";
-import {Users} from "./Users";
-import {Answers} from "./Answers";
-import {Votes} from "./Votes";
-import {Subscription} from "./Subscription";
+    BelongsTo,
+    BelongsToMany,
+    Column,
+    CreatedAt,
+    DataType,
+    Default,
+    ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table, UpdatedAt
+} from 'sequelize-typescript';
+import {Answers} from './Answers';
+import {Subscription} from './Subscription';
+import {Users} from './Users';
+import {Votes} from './Votes';
 
 @Table({tableName: 'questions'})
 export class Questions extends Model {
@@ -19,50 +19,50 @@ export class Questions extends Model {
     @AutoIncrement
     @PrimaryKey
     @Column(DataType.INTEGER)
-    id!: number
+    public id!: number
 
     @Column(DataType.STRING)
-    title!: string
+    public title!: string
 
     @Column(DataType.TEXT)
-    question !: string
+    public question !: string
 
     @Default(0)
     @Column(DataType.INTEGER)
-    counts!: number
+    public counts!: number
 
 
     @Column(DataType.ARRAY(DataType.STRING))
-    tags !: string[]
+    public tags !: string[]
 
 
     @Default(false)
     @Column(DataType.BOOLEAN)
-    is_answered !: boolean
+    public is_answered !: boolean
 
     @Default(0)
     @Column(DataType.INTEGER)
-    views !: number
+    public views !: number
     @ForeignKey(() => Users)
     @Column(DataType.INTEGER)
-    userId !: number
+    public userId !: number
     @BelongsTo(() => Users)
-    user !: Users
+    public user !: Users
 
     @HasMany(() => Votes)
-    votes!: Votes[]
+    public votes!: Votes[]
 
     @HasMany(() => Answers,)
-    answers !: Answers[]
+    public answers !: Answers[]
 
     @HasMany(() => Subscription)
-    subscription!: Subscription[]
+    public subscription!: Subscription[]
     @CreatedAt
     @Column(DataType.DATE)
-    createdAt!: Date;
+    public createdAt!: Date;
 
     @UpdatedAt
     @Column(DataType.DATE)
-    updatedAt!: Date;
+    public updatedAt!: Date;
 
 }

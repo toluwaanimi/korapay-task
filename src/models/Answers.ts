@@ -1,17 +1,17 @@
 import {
-    Model,
-    Column,
-    Table,
-    BelongsToMany,
-    CreatedAt,
-    UpdatedAt,
     AutoIncrement,
-    PrimaryKey, DataType, HasOne, ForeignKey, BelongsTo, HasMany, Default
-} from "sequelize-typescript";
-import {Users} from "./Users";
-import {Questions} from "./Questions";
-import {Votes} from "./Votes";
-import {Comments} from "./Comments";
+    BelongsTo,
+    BelongsToMany,
+    Column,
+    CreatedAt,
+    DataType,
+    Default,
+    ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table, UpdatedAt
+} from 'sequelize-typescript';
+import {Comments} from './Comments';
+import {Questions} from './Questions';
+import {Users} from './Users';
+import {Votes} from './Votes';
 
 @Table({tableName: 'answers'})
 export class Answers extends Model {
@@ -19,45 +19,45 @@ export class Answers extends Model {
     @AutoIncrement
     @PrimaryKey
     @Column(DataType.INTEGER)
-    id!: number
+    public id!: number
 
 
     @Column(DataType.TEXT)
-    answer!: string
+    public answer!: string
 
     @Default(0)
     @Column(DataType.INTEGER)
-    counts!: number
+    public counts!: number
 
     @ForeignKey(() => Questions)
     @Column(DataType.INTEGER)
-    questionId !: number
+    public questionId !: number
 
 
     @BelongsTo(() => Questions)
-    questions !: Questions
+    public questions !: Questions
 
     @ForeignKey(() => Users)
     @Column(DataType.INTEGER)
-    userId !: number
+    public userId !: number
     @BelongsTo(() => Users)
-    user !: Users
+    public user !: Users
 
     @Default(false)
     @Column(DataType.BOOLEAN)
-    is_answer !: boolean
+    public is_answer !: boolean
 
     @HasMany(() => Votes)
-    votes!: Votes[]
+    public votes!: Votes[]
 
     @HasMany(() => Comments)
-    comments!: Votes[]
+    public comments!: Votes[]
     @CreatedAt
     @Column(DataType.DATE)
-    createdAt!: Date;
+    public createdAt!: Date;
 
     @UpdatedAt
     @Column(DataType.DATE)
-    updatedAt!: Date;
+    public updatedAt!: Date;
 
 }

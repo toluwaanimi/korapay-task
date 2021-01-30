@@ -1,9 +1,9 @@
-import {createUserDTO, loginUserDTO} from "../../shared/dto/user.dto";
-import {Users} from "../../models/Users";
 import * as bcrypt from 'bcrypt';
-import UserWithThatEmailAlreadyExistsException from "../../shared/exception/exceptionResponse";
-import {generateToken} from "../../shared/utils/jsonwebtoken";
-import BadRequestException from "../../shared/exception/BadRequestException";
+import {Users} from '../../models/Users';
+import {createUserDTO, loginUserDTO} from '../../shared/dto/user.dto';
+import BadRequestException from '../../shared/exception/BadRequestException';
+import UserWithThatEmailAlreadyExistsException from '../../shared/exception/exceptionResponse';
+import {generateToken} from '../../shared/utils/jsonwebtoken';
 
 
 /**
@@ -18,7 +18,7 @@ export default class AuthService {
      * @returns {}
      * @param body
      */
-    static async createAccount(body: createUserDTO) {
+    public static async createAccount(body: createUserDTO) {
         if (await Users.findOne({where: {email: body.email}, logging: false})) {
             throw new UserWithThatEmailAlreadyExistsException(body.email)
         }
@@ -38,7 +38,7 @@ export default class AuthService {
      * @returns {}
      * @param body
      */
-    static async login(body: loginUserDTO) {
+    public static async login(body: loginUserDTO) {
         const user = await Users.findOne({where: {email: body.email}})
         if (user && bcrypt.compareSync(body.password, user.password)) {
             return generateToken({id: user.id})

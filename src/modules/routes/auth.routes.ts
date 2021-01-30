@@ -1,6 +1,6 @@
 import express, {Router} from 'express';
-import AuthController from "../controllers/auth.controller";
-import {validateSignInBody, validateSignUpBody} from "../../shared/validations/auth.validation";
+import {validateSignInBody, validateSignUpBody} from '../../shared/validations/auth.validation';
+import AuthController from '../controllers/auth.controller';
 
 const router = express.Router();
 

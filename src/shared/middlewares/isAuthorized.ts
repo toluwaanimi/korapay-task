@@ -1,7 +1,7 @@
-import {verifyToken} from "../utils/jsonwebtoken";
-import {NextFunction, Response} from "express";
-import {Users} from "../../models/Users";
-import {handleFailure} from "../utils/responseHandler";
+import {verifyToken} from '../utils/jsonwebtoken';
+import {NextFunction, Response} from 'express';
+import {Users} from '../../models/Users';
+import {handleFailure} from '../utils/responseHandler';
 
 /**
  * Authenticated user middleware

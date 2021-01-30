@@ -1,18 +1,18 @@
-import {
-    Model,
-    Column,
-    Table,
-    BelongsToMany,
-    CreatedAt,
-    UpdatedAt,
-    AutoIncrement,
-    PrimaryKey, DataType, HasOne, HasMany, Unique, BeforeCreate, AllowNull, Default
-} from "sequelize-typescript";
-import {Questions} from "./Questions";
 import bcrypt from 'bcrypt'
-import {Votes} from "./Votes";
-import {Subscription} from "./Subscription";
-import {Rater} from "./Rater";
+import {
+    AllowNull,
+    AutoIncrement,
+    BeforeCreate,
+    BelongsToMany,
+    Column,
+    CreatedAt,
+    DataType,
+    Default, HasMany, HasOne, Model, PrimaryKey, Table, Unique, UpdatedAt
+} from 'sequelize-typescript';
+import {Questions} from './Questions';
+import {Rater} from './Rater';
+import {Subscription} from './Subscription';
+import {Votes} from './Votes';
 
 @Table({tableName: 'users'})
 export class Users extends Model {
@@ -20,70 +20,70 @@ export class Users extends Model {
     @AutoIncrement
     @PrimaryKey
     @Column(DataType.INTEGER)
-    id!: number
+    public id!: number
 
     @Unique
     @Column(DataType.STRING)
-    email!: string
+    public email!: string
 
     @Unique
     @Column(DataType.STRING)
-    username!: string
+    public username!: string
 
     @AllowNull(true)
     @Column(DataType.STRING)
-    profileURL !: string
+    public profileURL !: string
 
     @AllowNull(true)
     @Column(DataType.STRING)
-    fullName!: string;
+    public fullName!: string;
 
     @AllowNull(true)
     @Column(DataType.STRING)
-    location!: string;
+    public location!: string;
 
     @AllowNull(true)
     @Column(DataType.STRING)
-    title!: string;
+    public title!: string;
 
     @AllowNull(true)
     @Column(DataType.STRING)
-    twitter!: string
+    public twitter!: string
 
     @AllowNull(true)
     @Column(DataType.STRING)
-    github!: string
+    public github!: string
 
     @Column(DataType.STRING)
-    password !: string
+    public password !: string
 
     @Default(1)
     @Column(DataType.BIGINT)
-    reputation !: number
+    public reputation !: number
 
     @CreatedAt
     @Column(DataType.DATE)
-    createdAt!: Date;
+    public createdAt!: Date;
 
     @UpdatedAt
     @Column(DataType.DATE)
-    updatedAt!: Date;
+    public updatedAt!: Date;
 
     @HasMany(() => Subscription)
-    subscription !: Subscription[]
+    public subscription !: Subscription[]
 
     @HasMany(() => Questions)
-    question!: Questions[]
+    public question!: Questions[]
 
     @HasMany(() => Votes)
-    votes !: Votes[]
+    public votes !: Votes[]
 
     @HasMany(() => Rater)
-    rater !: Rater[]
+    public rater !: Rater[]
 
 
     @BeforeCreate
-    static encryptPassword(user: Users) {
+    public static encryptPassword(user: Users) {
         user.password = bcrypt.hashSync(user.password, 8);
     }
 }

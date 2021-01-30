@@ -19,7 +19,7 @@ function handleSuccess(code: number, message: string, data: any, request: Reques
         .json({
             status: true,
             message,
-            data: data,
+            data,
             meta
         });
 }
@@ -41,7 +41,7 @@ function handleFailure(code: number, message: string, data: any, request: Reques
         .json({
             status: false,
             message,
-            data: data,
+            data,
             meta
         });
 }

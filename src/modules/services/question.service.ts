@@ -1,8 +1,8 @@
-import {Questions} from "../../models/Questions";
-import {Answers} from "../../models/Answers";
-import NotFoundException from "../../shared/exception/NotFoundException";
-import {Comments} from "../../models/Comments";
-import BadRequestException from "../../shared/exception/BadRequestException";
+import {Answers} from '../../models/Answers';
+import {Comments} from '../../models/Comments';
+import {Questions} from '../../models/Questions';
+import BadRequestException from '../../shared/exception/BadRequestException';
+import NotFoundException from '../../shared/exception/NotFoundException';
 
 
 /**
@@ -18,7 +18,7 @@ export class QuestionService {
      * @param data
      * @param user
      */
-    static async create(data: any, user: any) {
+    public static async create(data: any, user: any) {
         try {
             const question = await Questions.create({
                 title: data.title,
@@ -49,7 +49,7 @@ export class QuestionService {
      * @param data
      * @param user
      */
-    static async findUserQuestions(data: any, user: any) {
+    public static async findUserQuestions(data: any, user: any) {
         return await Questions.findAndCountAll({
             where: {userId: user.userdataValues.id},
             limit: data.per_page || 50,
@@ -73,7 +73,7 @@ export class QuestionService {
      * @returns {}
      * @param data
      */
-    static async findOneQuestion(data: any) {
+    public static async findOneQuestion(data: any) {
         const question = await Questions.findOne({
             where: {id: data.id}, include: [{
                 model: Answers,
@@ -100,7 +100,7 @@ export class QuestionService {
      * @returns []
      * @param data
      */
-    static async findAllQuestions(data: any) {
+    public static async findAllQuestions(data: any) {
         return await Questions.findAndCountAll({
             limit: data.per_page || 50, offset: data.page || 0, include: [{
                 model: Answers,

@@ -1,15 +1,15 @@
 import {
-    Model,
-    Column,
-    Table,
-    CreatedAt,
-    UpdatedAt,
     AutoIncrement,
-    PrimaryKey, DataType,  Default, ForeignKey, BelongsTo
-} from "sequelize-typescript";
-import {Questions} from "./Questions";
+    BelongsTo,
+    Column,
+    CreatedAt,
+    DataType,
+    Default,
+    ForeignKey, Model,  PrimaryKey, Table, UpdatedAt
+} from 'sequelize-typescript';
+import {Questions} from './Questions';
 
-import {Users} from "./Users";
+import {Users} from './Users';
 
 @Table({tableName: 'subscription'})
 export class Subscription extends Model {
@@ -17,39 +17,39 @@ export class Subscription extends Model {
     @AutoIncrement
     @PrimaryKey
     @Column(DataType.INTEGER)
-    id!: number
+    public id!: number
 
 
     @Column(DataType.STRING)
-    channel !: string
+    public channel !: string
 
 
     @Default(true)
     @Column(DataType.BOOLEAN)
-    isActive !: boolean
+    public isActive !: boolean
 
     @BelongsTo(() => Users)
-    users!: Users
+    public users!: Users
 
     @ForeignKey(() => Users)
     @Column(DataType.INTEGER)
-    userId !: number
+    public userId !: number
 
     @BelongsTo(() => Questions)
-    questions!: Questions
+    public questions!: Questions
 
     @ForeignKey(() => Questions)
     @Column(DataType.INTEGER)
-    questionId !: number
+    public questionId !: number
 
 
     @CreatedAt
     @Column(DataType.DATE)
-    createdAt!: Date;
+    public createdAt!: Date;
 
     @UpdatedAt
     @Column(DataType.DATE)
-    updatedAt!: Date;
+    public updatedAt!: Date;
 
 
 }

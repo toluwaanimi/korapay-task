@@ -1,6 +1,6 @@
-import {NextFunction, Request, Response} from "express";
-import {handleSuccess} from "../../shared/utils/responseHandler";
-import {QuestionService} from "../services/question.service";
+import {NextFunction, Request, Response} from 'express';
+import {handleSuccess} from '../../shared/utils/responseHandler';
+import {QuestionService} from '../services/question.service';
 
 export default class QuestionController {
     /**
@@ -11,10 +11,10 @@ export default class QuestionController {
      * @param {*} next
      * @returns handleSuccess
      */
-    static async create(req: any, res: Response, next: NextFunction) {
+    public static async create(req: any, res: Response, next: NextFunction) {
         try {
             const question = await QuestionService.create(req.body, req.user)
-            return handleSuccess(201, "question created", question, req, res)
+            return handleSuccess(201, 'question created', question, req, res)
         } catch (e) {
             next(e)
         }
@@ -28,11 +28,11 @@ export default class QuestionController {
      * @param {*} next
      * @returns handleSuccess
      */
-    static async findUserQuestions(req: any, res: Response, next: NextFunction) {
+    public static async findUserQuestions(req: any, res: Response, next: NextFunction) {
         try {
             console.log(req.user)
             const questions = await QuestionService.findUserQuestions(req.query, req.user)
-            return handleSuccess(200, "question fetched", questions.rows, req, res,)
+            return handleSuccess(200, 'question fetched', questions.rows, req, res,)
         } catch (e) {
             next(e)
         }
@@ -47,12 +47,12 @@ export default class QuestionController {
      * @param {*} next
      * @returns handleSuccess
      */
-    static async findOneQuestion(req: Request, res: Response, next: NextFunction) {
+    public static async findOneQuestion(req: Request, res: Response, next: NextFunction) {
         console.log(req.params)
         try {
             const questions = await QuestionService.findOneQuestion(req.params)
 
-            return handleSuccess(200, "question fetched", questions, req, res)
+            return handleSuccess(200, 'question fetched', questions, req, res)
         } catch (e) {
             next(e)
         }
@@ -66,10 +66,10 @@ export default class QuestionController {
      * @param {*} next
      * @returns handleSuccess
      */
-    static async findAll(req: Request, res: Response, next: NextFunction) {
+    public static async findAll(req: Request, res: Response, next: NextFunction) {
         try {
             const questions = await QuestionService.findAllQuestions(req.query)
-            return handleSuccess(200, "question fetched", questions.rows, req, res)
+            return handleSuccess(200, 'question fetched', questions.rows, req, res)
         } catch (e) {
             next(e)
         }
