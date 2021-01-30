@@ -1,21 +1,37 @@
 # Stackoverflow Documentation
-
 The stackoverflow task is basic implementation of [Stackoverflow](https://stackoverflow.com)
+
+## Author 🚀
+
+> ADEBAYO EMMANUEL TOLUWANIMI
+---
 
 ## Documentation
 
 The postman documentation can be accessed [here](https://documenter.getpostman.com/view/8937000/TW6xo8hf)
 
-## Requirements
+---
 
-* Node 12 or higher
+## Technologies
 
-* Postgres
+- Node JS
+- Express
+- Socket.io
+- Jest
+
+---
+
+## Database
+
+- [Postgres](https://www.postgresql.org/) (Sequelize ORM)
+
+---
 
 ## Install NodeJS
 
 To Install NodeJS, kindly go to [Nodejs](https://nodejs.com) and follow the necessary instructions required depending on
 your PC Operating System
+---
 
 ## MACOS
 
@@ -27,6 +43,8 @@ using [homebrew](https://github.com/Homebrew/legacy-homebrew)
 brew install node
 ```
 
+---
+
 ## Windows
 
 using a [package](https://nodejs.org/en/#download) simply download the installer
@@ -37,6 +55,8 @@ using [chocolatey](http://chocolatey.org/) to install Node
 cinst nodejs
 ```
 
+---
+
 ## To install Postgres
 
 For Windows users, you can kindly follow this
@@ -45,6 +65,7 @@ your local PC which explains how to create a database
 
 For Mac users, you can kindly follow this tutorials [here](https://www.robinwieruch.de/postgres-sql-macos-setup)  to
 install Postgres on your local PC which explains how to create a database
+---
 
 ## Setup Database
 
@@ -60,10 +81,14 @@ project
 ```
 
 Kindly replace these values with the appropriate values based on your Database environment
+---
 
 ## Start Development
+Kindly clone the repo `https://gitlab.com/korapay-engineering/bems-emm-ade.git`
 
-Installation To install the necessary packages, in your folder directory kindly run
+### Installation
+
+To install the necessary packages, in your folder directory kindly run
 
 ```markdown
 npm i
@@ -83,6 +108,8 @@ yarn add
       npm run start
          ```
 
+---
+
 ## Implementation Required
 
 * Authentication
@@ -101,6 +128,8 @@ Bonus Task
 
 * Subscription
 
+---
+
 ## Stackoverflow Rules based on the scope of implementation
 
 1. How to gain reputation ?
@@ -118,7 +147,12 @@ Bonus Task
     * your answer is voted down: −2
     * you vote down an answer: −1
 
+---
+
 ## Things implemented
+
+> `NOTE:` when making request to protected routes , add `Bearer` to the prefix of the token. eg 'Bearer JWT TOKEN'.
+>
 
 * Authentication
     * Registration
@@ -126,14 +160,15 @@ Bonus Task
 
 * Question
     * Ask Question
-    * Get All Questions
-    * Get Single Question
+    * Get All Questions with answers and comments
+    * Get Single Question with answers and comments
     * Answer
         * Submit an answer
         * Mark an answer right
         * Delete an answer
     * Subscription
         * Subscribe to a question
+        * Notification when there's an activity for a question
     * Comment
         * Comment to a question
         * Update Comment
@@ -153,6 +188,17 @@ Bonus Task
         * Undo Downvote for an Answer
 
 * Reputation
-    
-     All rules of stackoverflow were followed regarding upvote and downvote for questions and answers
-    
+
+  All rules of stackoverflow were followed regarding upvote and downvote for questions and answers
+
+---
+
+## Thought Process
+
+Understanding the task was a vital part of the process for me. I spent time studying Stackoverflow Network on my
+browser, making sure I understand how things are handled and structured.
+
+I went through their rules are regulations to give me a better understanding of every single activity carried to aid a
+detailed implementation of the required task.
+
+
