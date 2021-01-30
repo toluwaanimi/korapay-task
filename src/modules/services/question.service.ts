@@ -3,7 +3,6 @@ import {Comments} from '../../models/Comments';
 import {Questions} from '../../models/Questions';
 import BadRequestException from '../../shared/exception/BadRequestException';
 import NotFoundException from '../../shared/exception/NotFoundException';
-import {Sequelize} from "sequelize-typescript";
 
 
 /**
@@ -20,30 +19,23 @@ export class QuestionService {
      * @param user
      */
     public static async create(data: any, user: any) {
-        const t = await new Sequelize().transaction()
-
         try {
             const question = await Questions.create({
                 title: data.title,
                 question: data.question,
                 userId: user.id
-            }, {transaction: t})
+            })
             if (data.answer) {
                 await Answers.create({
                     answer: data.answer,
                     questionId: question.id,
                     userId: user.id
-                }, {
-                    transaction: t
                 })
-                await t.commit()
                 return question
             } else {
-                await t.commit()
                 return question
             }
         } catch (e) {
-            await t.rollback()
             throw new BadRequestException('failed to create question')
         }
 
@@ -91,10 +83,10 @@ export class QuestionService {
                     as: 'comments'
                 }]
             }],
-
+            logging: false
         })
         if (question) {
-            await Questions.update({views: question.views + 1}, {where: {id: data.id},})
+            await Questions.update({views: question.views + 1}, {where: {id: data.id}, })
             return question
         } else {
             throw new NotFoundException('invalid question id')

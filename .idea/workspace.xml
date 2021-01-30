@@ -4,7 +4,10 @@
     <list default="true" id="43b15a1d-dc4b-4c6c-9b0f-0aa6a28367d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/services/answer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/answer.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/comments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/comments.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/services/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/question.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/services/vote.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/vote.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sequelize.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequelize.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.test">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="d.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/d.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -95,9 +98,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.test" />
         <item itemvalue="Node.js.d.js" />
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.start:dev" />
       </list>
     </recent_temporary>
@@ -116,7 +119,7 @@
       <workItem from="1611791176192" duration="128000" />
       <workItem from="1611919992668" duration="1908000" />
       <workItem from="1611922732121" duration="29828000" />
-      <workItem from="1612038589755" duration="3803000" />
+      <workItem from="1612038589755" duration="5491000" />
     </task>
     <servers />
   </component>
