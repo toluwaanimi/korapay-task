@@ -62,7 +62,7 @@ export class QuestionService {
                     as: 'comments'
                 }]
             }],
-            logging: false
+            
         })
     }
 
@@ -83,10 +83,10 @@ export class QuestionService {
                     as: 'comments'
                 }]
             }],
-            logging: false
+            
         })
         if (question) {
-            await Questions.update({views: question.views + 1}, {where: {id: data.id}, logging: false})
+            await Questions.update({views: question.views + 1}, {where: {id: data.id}, })
             return question
         } else {
             throw new NotFoundException('invalid question id')
@@ -110,7 +110,7 @@ export class QuestionService {
                     as: 'comments'
                 }]
             }],
-            logging: false
+            
         })
     }
 

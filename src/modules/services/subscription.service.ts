@@ -22,7 +22,7 @@ export class SubscriptionService {
                     userId: user.id,
                     questionId: data.questionId
                 },
-                logging: false
+                
             })
         } catch (e) {
             throw new BadRequestException('failed to create subscription')

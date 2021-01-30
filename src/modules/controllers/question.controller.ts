@@ -48,7 +48,7 @@ export default class QuestionController {
      * @returns handleSuccess
      */
     public static async findOneQuestion(req: Request, res: Response, next: NextFunction) {
-        console.log(req.params)
+
         try {
             const questions = await QuestionService.findOneQuestion(req.params)
 

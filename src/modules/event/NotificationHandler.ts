@@ -55,7 +55,7 @@ export default class NotificationHandler {
      * @param id
      */
     static async getSubscribedUsers(id: number) {
-        return await Subscription.findAll({where: {questionId: id}, logging: false});
+        return await Subscription.findAll({where: {questionId: id}, });
     }
 
     /**

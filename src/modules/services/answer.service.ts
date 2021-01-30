@@ -48,7 +48,7 @@ export class AnswerService {
                     id: data.id,
                     questionId: data.questionId
                 },
-                logging: false
+                
             })
             const userThatAnsweredId = await Answers.findOne({where: {id: data.id}})
             // @ts-ignore
@@ -70,7 +70,7 @@ export class AnswerService {
      */
     static async deleteOne(data: any, user: any) {
         try {
-            return await Answers.destroy({where: {id: data.id, userId: user.id}, logging: false})
+            return await Answers.destroy({where: {id: data.id, userId: user.id}, })
 
         } catch (e) {
             throw new BadRequestException('failed to delete answer')
