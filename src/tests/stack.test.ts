@@ -83,7 +83,7 @@ describe('Describe Answer Activities', () => {
         }).expect(200)
     });
 
-    test('it should not allow you answer a question because you asked it', async () => {
+    test('it should not allow you mark answer a question because you asked it', async () => {
         return request(app).put('/answer/' + questionId + '/' + answer).auth(token, {type: 'bearer'}).expect(400)
     })
 })

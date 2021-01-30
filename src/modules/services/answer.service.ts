@@ -1,6 +1,7 @@
 import {Answers} from "../../models/Answers";
 import NotificationHandler from "../event/NotificationHandler";
 import BadRequestException from "../../shared/exception/BadRequestException";
+import {Users} from "../../models/Users";
 
 /**
  *@class AnswerService
@@ -41,7 +42,7 @@ export class AnswerService {
      */
     static async markRight(data: any) {
         try {
-            return await Answers.update({is_answer: true}, {
+            await Answers.update({is_answer: true}, {
                 where: {
                     is_answer: false,
                     id: data.id,
@@ -49,11 +50,15 @@ export class AnswerService {
                 },
                 logging: false
             })
+            const userThatAnsweredId = await Answers.findOne({where: {id: data.id}})
+            // @ts-ignore
+            const user = await Users.findOne({id: userThatAnsweredId?.userId})
+            // @ts-ignore
+            await Users.update({reputation: parseInt(user?.reputation) + 15}, {where: {id: user.id}})
 
         } catch (e) {
             throw new BadRequestException('could not mark the answer right')
         }
-
     }
 
     /**
