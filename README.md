@@ -82,6 +82,20 @@ project and replace with your credentials
     password: 'your password'
 ```
 
+### OR
+Create a .env file in the root directory and add your databae details. It should have the following properties
+
+
+```markdown
+DATABASE_HOST=
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
+DATABASE_NAME=
+DATABASE_PORT=
+```
+
+
+
 Kindly replace these values with the appropriate values based on your Database environment
 ---
 
