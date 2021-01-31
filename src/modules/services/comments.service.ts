@@ -2,6 +2,7 @@ import {Comments} from "../../models/Comments";
 import NotFoundException from "../../shared/exception/NotFoundException";
 import NotificationHandler from "../event/NotificationHandler";
 import BadRequestException from "../../shared/exception/BadRequestException";
+import {sequelize} from "../../sequelize";
 
 
 /**
@@ -46,11 +47,18 @@ export class CommentsService {
      */
 
     static async editComment(data: any, user: any) {
+        const t = await sequelize.transaction()
+
         const comment = await Comments.findOne({where: {id: parseInt(data.id), userId: user.id}})
         if (comment) {
-            await Comments.update({comment: data.comment || comment.comment}, {where: {id: data.id, userId: user.id}})
+            await Comments.update({comment: data.comment || comment.comment}, {
+                where: {id: data.id, userId: user.id},
+                transaction: t
+            })
+            await t.commit()
             return Comments.findOne({where: {id: data.id, userId: user.id}})
         } else {
+            await t.rollback()
             throw new NotFoundException('invalid comment id')
         }
     }

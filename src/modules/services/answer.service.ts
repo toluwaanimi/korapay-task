@@ -2,6 +2,7 @@ import {Answers} from "../../models/Answers";
 import NotificationHandler from "../event/NotificationHandler";
 import BadRequestException from "../../shared/exception/BadRequestException";
 import {Users} from "../../models/Users";
+import {sequelize} from "../../sequelize";
 
 /**
  *@class AnswerService
@@ -16,19 +17,22 @@ export class AnswerService {
      * @param user
      */
     static async submit(data: any, user: any) {
+        const t = await sequelize.transaction()
         try {
             const answer = await Answers.create({
                 questionId: data.id,
                 answer: data.answer,
                 userId: user.id
-            })
+            }, {transaction: t})
 
             await NotificationHandler.notifyUsers({
                 userId: user.id,
                 questionId: data.id
             })
+            await t.commit()
             return answer
         } catch (e) {
+            await t.rollback()
             throw new BadRequestException('could not submit answer')
         }
     }
@@ -41,22 +45,26 @@ export class AnswerService {
      * @param data
      */
     static async markRight(data: any) {
+        const t = await sequelize.transaction()
+
         try {
             const answer = await Answers.update({is_answer: true}, {
                 where: {
                     is_answer: false,
                     id: data.id,
                     questionId: data.questionId
-                },
+                }, transaction: t
 
             })
             const userThatAnsweredId = await Answers.findOne({where: {id: data.id}})
             // @ts-ignore
             const user = await Users.findOne({id: userThatAnsweredId?.userId})
             // @ts-ignore
-            await Users.update({reputation: parseInt(user?.reputation) + 15}, {where: {id: user.id}})
+            await Users.update({reputation: parseInt(user?.reputation) + 15}, {where: {id: user.id}, transaction: t})
+            await t.commit()
             return answer
         } catch (e) {
+            await t.rollback()
             throw new BadRequestException('could not mark the answer right')
         }
     }
@@ -70,7 +78,7 @@ export class AnswerService {
      */
     static async deleteOne(data: any, user: any) {
         try {
-            return await Answers.destroy({where: {id: data.id, userId: user.id}, })
+            return await Answers.destroy({where: {id: data.id, userId: user.id},})
 
         } catch (e) {
             throw new BadRequestException('failed to delete answer')
