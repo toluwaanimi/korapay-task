@@ -227,7 +227,15 @@ Bonus Task
 Understanding the task was a vital part of the process for me. I spent time studying Stackoverflow Network on my
 browser, making sure I understand how things are handled and structured.
 
-I went through their rules are regulations to give me a better understanding of every single activity carried to aid a
+I went through their rules aND regulations to give me a better understanding of every single activity carried out to aid a
 detailed implementation of the required task.
 
 
+---
+## Contributions
+
+
+
+---
+
+## Challenges
