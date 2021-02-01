@@ -51,7 +51,7 @@ export class Answers extends Model {
     public votes!: Votes[]
 
     @HasMany(() => Comments)
-    public comments!: Votes[]
+    public comments!: Comments[]
     @CreatedAt
     @Column(DataType.DATE)
     public createdAt!: Date;

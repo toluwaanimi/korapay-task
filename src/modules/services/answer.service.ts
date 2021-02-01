@@ -19,18 +19,21 @@ export class AnswerService {
     static async submit(data: any, user: any) {
         const t = await sequelize.transaction()
         try {
-            const answer = await Answers.create({
-                questionId: data.id,
-                answer: data.answer,
-                userId: user.id
-            }, {transaction: t})
+            const answer = await Answers.findOrCreate({
+                where: {
+                    questionId: data.id,
+                    answer: data.answer,
+                    userId: user.id
+                },
+                transaction: t
+            })
 
             await NotificationHandler.notifyUsers({
                 userId: user.id,
                 questionId: data.id
             })
             await t.commit()
-            return answer
+            return answer[0]
         } catch (e) {
             await t.rollback()
             throw new BadRequestException('could not submit answer')

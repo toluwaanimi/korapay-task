@@ -83,18 +83,12 @@ project and replace with your credentials
 ```
 
 ### OR
+
 Create a .env file in the root directory and add your databae details. It should have the following properties
 
-
 ```markdown
-DATABASE_HOST=
-DATABASE_USERNAME=
-DATABASE_PASSWORD=
-DATABASE_NAME=
-DATABASE_PORT=
+DATABASE_HOST= DATABASE_USERNAME= DATABASE_PASSWORD= DATABASE_NAME= DATABASE_PORT=
 ```
-
-
 
 Kindly replace these values with the appropriate values based on your Database environment
 ---
@@ -119,12 +113,11 @@ yarn add
     * ```markdown 
       npm run dev
       ```
-      
+
 * To build your app for production
     * ```markdown
       npm run build
          ```
-
 
 
 * To run your app server for production
@@ -166,7 +159,8 @@ Bonus Task
    The primary way to gain reputation is by posting good questions and useful answers. Votes on these posts cause you to
    gain (or sometimes lose) reputation.
    > `NOTE:` A user reputation can't go less than 1
-
+   
+   > `NOTE:` A user can't have more than 40 voting activities per day
 2. You gain reputation when :
     * question is voted up: +10
     * answer is voted up: +10
@@ -218,6 +212,8 @@ Bonus Task
 
 * Reputation
 
+* Rate Limiter for the vote limit per day
+
 > `NOTE:` All rules of stackoverflow were followed regarding reputation, upvote and downvote for questions and answers
 
 ---
@@ -227,14 +223,13 @@ Bonus Task
 Understanding the task was a vital part of the process for me. I spent time studying Stackoverflow Network on my
 browser, making sure I understand how things are handled and structured.
 
-I went through their rules aND regulations to give me a better understanding of every single activity carried out to aid a
-detailed implementation of the required task.
+I went through their rules and regulations to give me a better understanding of every single activity carried out to aid
+a detailed implementation of the required task.
 
 
 ---
+
 ## Contributions
-
-
 
 ---
 

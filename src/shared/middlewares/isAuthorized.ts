@@ -24,8 +24,14 @@ const isAuthorized = async (req: any, res: Response, next: NextFunction) => {
 
     try {
         const decoded = verifyToken(token, req, res)
-        req.user = await Users.findByPk(decoded.id);
-        next();
+        const user = await Users.findByPk(decoded.id);
+        if (user) {
+            req.user = user
+            next();
+        } else {
+            return handleFailure(401, 'Access Denied. Please Log In.', undefined, req, res,);
+
+        }
     } catch (error) {
         return handleFailure(401, 'Error in verification. Please try again', undefined, req, res);
     }
