@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43b15a1d-dc4b-4c6c-9b0f-0aa6a28367d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Answers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Answers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/services/answer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/services/answer.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/middlewares/isAuthorized.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/middlewares/isAuthorized.ts" afterDir="false" />
-    </list>
+    <list default="true" id="43b15a1d-dc4b-4c6c-9b0f-0aa6a28367d2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +114,7 @@
       <workItem from="1611919992668" duration="1908000" />
       <workItem from="1611922732121" duration="29828000" />
       <workItem from="1612038589755" duration="9923000" />
-      <workItem from="1612126427635" duration="3199000" />
+      <workItem from="1612126427635" duration="3733000" />
     </task>
     <servers />
   </component>

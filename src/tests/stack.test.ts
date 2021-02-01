@@ -14,7 +14,7 @@ let questionId: number
 let answer: number
 let newUserToken: string
 beforeAll(async () => {
-    await sequelize.sync({logging: false})
+    await sequelize.sync({logging: false })
 })
 describe('Describe User Authentication', () => {
 
